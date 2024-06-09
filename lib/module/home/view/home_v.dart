@@ -34,6 +34,9 @@ class HomeViewState extends BaseStatefulPageState<HomeView, HomeViewModel> {
       debugPrint('HomeView.onDispose()');
       return true;
     }());
+
+    /// BaseStatefulPageState的子类，重写 dispose()
+    /// 一定要执行父类 dispose()，防止内存泄漏
     super.dispose();
   }
 
@@ -151,6 +154,7 @@ class HomeViewState extends BaseStatefulPageState<HomeView, HomeViewModel> {
     );
   }
 
+  /// 是否保存页面状态
   @override
   bool get wantKeepAlive => true;
 

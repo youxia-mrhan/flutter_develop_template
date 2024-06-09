@@ -217,4 +217,5 @@ class DioClient extends DioForNative {
       }
     }
   }
+
 }

@@ -8,6 +8,7 @@ import '../common/net/dio_response.dart';
 
 class MessageRepository {
 
+  /// 分页列表
   Future<PageViewModel> getMessageData({
     required PageViewModel pageViewModel,
     CancelToken? cancelToken,

@@ -135,7 +135,7 @@ abstract class BaseStatefulPageState<T extends BaseStatefulPage, VM extends Page
   }
 
   /// BaseStatefulPageState的子类，重写 dispose()
-  /// 一定要执行父类 dispose()
+  /// 一定要执行父类 dispose()，防止内存泄漏
   @override
   void dispose() {
     /// 销毁顺序

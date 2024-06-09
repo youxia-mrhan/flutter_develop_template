@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35f4bf16-554e-49c0-a4d5-701389847ae3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis_options.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/analysis_options.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/api/home_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/api/home_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/api/message_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/api/message_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/api/personal_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/api/personal_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/mvvm/base_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/mvvm/base_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/widget/notifier_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/notifier_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/module/home/view/home_v.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/home/view/home_v.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/module/home/view_model/home_vm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/home/view_model/home_vm.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/module/test_fluro/page_c.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/test_fluro/page_c.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,17 +50,18 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/hanxuguang/Documents/develop/flutter/flutter_object/flutter_develop_template/lib/api&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "io.flutter.reload.alreadyRun": "true",
+    "last_opened_file_path": "/Users/hanxuguang/Documents/develop/flutter/flutter_object/flutter_develop_template/lib/api",
+    "settings.editor.selected.configurable": "flutter.settings",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib/api" />

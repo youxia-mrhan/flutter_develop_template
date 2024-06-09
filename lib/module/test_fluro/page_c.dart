@@ -64,6 +64,7 @@ class PageCViewModel extends PageViewModel {
 
   @override
   onCreate() {
+    /// 将获取到的View 转化为 对应页面类型
     state = viewState as PageCViewState;
   }
 

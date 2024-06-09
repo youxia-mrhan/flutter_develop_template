@@ -8,6 +8,7 @@ import '../module/home/model/home_list_m.dart';
 
 class HomeRepository {
 
+  /// 获取首页数据
   Future<PageViewModel> getHomeData({
     required PageViewModel pageViewModel,
     CancelToken? cancelToken,

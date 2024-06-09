@@ -12,6 +12,7 @@ class HomeViewModel extends PageViewModel {
 
   @override
   onCreate() {
+    /// 转化成 对应View 状态类型
     state = viewState as HomeViewState;
     cancelToken = CancelToken();
     pageDataModel = PageDataModel();

@@ -6,80 +6,6 @@ import 'package:flutter_develop_template/main/application.dart';
 import '../mvvm/base_view_model.dart';
 import '../paging/base_paging_model.dart';
 
-/// 这个是配合 继承 BaseChangeNotifier 类使用的
-typedef NotifierValueWidgetBuilder<T extends BaseChangeNotifier> = Widget
-    Function(BuildContext context, T? value);
-
-class NotifierWidget<T extends BaseChangeNotifier> extends StatefulWidget {
-  const NotifierWidget({
-    super.key,
-    required this.data,
-    required this.builder,
-  });
-
-  /// 需要监听的数据观察类
-  final T? data;
-
-  final Widget Function(BuildContext, T?) builder;
-
-  @override
-  State<NotifierWidget<T>> createState() => _NotifierWidgetState<T>();
-}
-
-class _NotifierWidgetState<T extends BaseChangeNotifier>
-    extends State<NotifierWidget<T>> {
-  T? data;
-
-  /// 刷新UI
-  refreshState() => setState(() {
-        data = widget.data;
-      });
-
-  /// 对数据进行绑定监听
-  @override
-  void initState() {
-    super.initState();
-
-    data = widget.data;
-
-    // 先清空一次已注册的Listener，防止重复触发
-    data?.removeListener(refreshState);
-
-    // 添加监听
-    data?.addListener(refreshState);
-  }
-
-  @override
-  void didUpdateWidget(covariant NotifierWidget<T> oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.data != widget.data) {
-      // 先清空一次已注册的Listener，防止重复触发
-      oldWidget.data?.removeListener(refreshState);
-
-      data = widget.data;
-
-      // 添加监听
-      data?.addListener(refreshState);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (data == null) {
-      return Center(
-        child: Text('加载中...'),
-      );
-    }
-    return widget.builder(context, data);
-  }
-
-  @override
-  void dispose() {
-    widget.data?.removeListener(refreshState);
-    super.dispose();
-  }
-}
-
 enum NotifierResultType {
   // 不检查
   notCheck,
@@ -178,10 +104,10 @@ class PageDataModel<T, L extends BasePagingModel> extends BaseChangeNotifier {
   }
 }
 
-/// 这个是配合 PageDataModel 类使用的
 typedef NotifierPageWidgetBuilder<T extends BaseChangeNotifier> = Widget
     Function(BuildContext context, PageDataModel model);
 
+/// 这个是配合 PageDataModel 类使用的
 class NotifierPageWidget<T extends BaseChangeNotifier> extends StatefulWidget {
   NotifierPageWidget({
     super.key,
@@ -297,6 +223,78 @@ class _NotifierPageWidgetState<T extends BaseChangeNotifier>
   @override
   void dispose() {
     widget.model?.removeListener(refreshUI);
+    super.dispose();
+  }
+}
+
+typedef NotifierValueWidgetBuilder<T extends BaseChangeNotifier> = Widget Function(BuildContext context, T? value);
+/// 这个是配合 继承 BaseChangeNotifier 类使用的
+class NotifierWidget<T extends BaseChangeNotifier> extends StatefulWidget {
+  const NotifierWidget({
+    super.key,
+    required this.data,
+    required this.builder,
+  });
+
+  /// 需要监听的数据观察类
+  final T? data;
+
+  final Widget Function(BuildContext, T?) builder;
+
+  @override
+  State<NotifierWidget<T>> createState() => _NotifierWidgetState<T>();
+}
+
+class _NotifierWidgetState<T extends BaseChangeNotifier>
+    extends State<NotifierWidget<T>> {
+  T? data;
+
+  /// 刷新UI
+  refreshState() => setState(() {
+    data = widget.data;
+  });
+
+  /// 对数据进行绑定监听
+  @override
+  void initState() {
+    super.initState();
+
+    data = widget.data;
+
+    // 先清空一次已注册的Listener，防止重复触发
+    data?.removeListener(refreshState);
+
+    // 添加监听
+    data?.addListener(refreshState);
+  }
+
+  @override
+  void didUpdateWidget(covariant NotifierWidget<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.data != widget.data) {
+      // 先清空一次已注册的Listener，防止重复触发
+      oldWidget.data?.removeListener(refreshState);
+
+      data = widget.data;
+
+      // 添加监听
+      data?.addListener(refreshState);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (data == null) {
+      return Center(
+        child: Text('加载中...'),
+      );
+    }
+    return widget.builder(context, data);
+  }
+
+  @override
+  void dispose() {
+    widget.data?.removeListener(refreshState);
     super.dispose();
   }
 }

@@ -78,26 +78,26 @@ class PageRouteObserver extends NavigatorObserver {
     }());
   }
 
-  /// 获取原生路径
-  /// 使用 path拼接方式 传递 参数，会改变原来的 路由页面 Path
-  ///
-  /// 比如：NavigatorUtil.push(context,'${Routers.pageA}?name=$name&title=$title&url=$url&age=$age&price=$price&flag=$flag');
-  /// path会变成：/pageA?name=jk&title=%E5%BC%A0%E4%B8%89&url=https%3A%2F%2Fwww.baidu.com&age=99&price=9.9&flag=true
-  /// 所以需要还原一下
-  String? getOriginalPath(Route<dynamic>? route) {
-    // 获取原始的路由路径
-    String? fullPath = route?.settings.name;
-
-    if(fullPath != null) {
-      // 使用正则表达式去除查询参数
-      return fullPath.split('?')[0];
-    }
-
-    return fullPath;
-  }
-
   /// 返回当前路由栈的长度
   int getRouteStackLength() {
     return routeStack.length;
   }
+}
+
+/// 获取原生路径
+/// 使用 path拼接方式 传递 参数，会改变原来的 路由页面 Path
+///
+/// 比如：NavigatorUtil.push(context,'${Routers.pageA}?name=$name&title=$title&url=$url&age=$age&price=$price&flag=$flag');
+/// path会变成：/pageA?name=jk&title=%E5%BC%A0%E4%B8%89&url=https%3A%2F%2Fwww.baidu.com&age=99&price=9.9&flag=true
+/// 所以再次匹配pageA，找不到，需要还原一下，getOriginalPath(path)
+String? getOriginalPath(Route<dynamic>? route) {
+  // 获取原始的路由路径
+  String? fullPath = route?.settings.name;
+
+  if(fullPath != null) {
+    // 使用正则表达式去除查询参数
+    return fullPath.split('?')[0];
+  }
+
+  return fullPath;
 }

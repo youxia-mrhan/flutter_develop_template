@@ -7,6 +7,8 @@ import 'package:flutter_develop_template/module/personal/model/user_info_m.dart'
 import '../common/net/dio_response.dart';
 
 class PersonalRepository {
+
+  /// 注册
   Future<PageViewModel> registerUser({
     required PageViewModel pageViewModel,
     Map<String, dynamic>? params,
@@ -37,6 +39,7 @@ class PersonalRepository {
     return pageViewModel;
   }
 
+  /// 登陆
   Future<PageViewModel> loginUser({
     required PageViewModel pageViewModel,
     Map<String, dynamic>? params,
@@ -65,4 +68,5 @@ class PersonalRepository {
 
     return pageViewModel;
   }
+
 }

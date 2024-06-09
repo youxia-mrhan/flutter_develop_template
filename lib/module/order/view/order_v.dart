@@ -93,7 +93,7 @@ class OrderViewState extends BaseStatefulPageState<OrderView, OrderViewModel> {
 
                     /// 注意：使用 path拼接方式 传递 参数，会改变原来的 路由页面 Path
                     /// path会变成：/pageA?name=jk&title=%E5%BC%A0%E4%B8%89&url=https%3A%2F%2Fwww.baidu.com&age=99&price=9.9&flag=true
-                    /// 所以需要还原一下
+                    /// 所以再在匹配pageA，找不到，需要还原一下，getOriginalPath(path)
                     NavigatorUtil.push(context,'${Routers.pageA}?name=$name&title=$title&url=$url&age=$age&price=$price&flag=$flag')
                         .then((result) {
                           assert((){
