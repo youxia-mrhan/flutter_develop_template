@@ -380,6 +380,151 @@ DELETE：从服务器删除资源
 这个组件是我**封装**的，和 ViewModel 里的 **PageDataModel 绑定**，当**PageDataModel**里的**数据发生改变，** 就可以**通知** NotifierPageWidget 刷新；
 
 ```js
+enum NotifierResultType {
+  // 不检查
+  notCheck,
+
+  // 加载中
+  loading,
+
+  // 请求成功
+  success,
+
+  // 这种属于请求成功，但业务不通过，比如没有权限
+  unauthorized,
+
+  // 请求异常
+  dioError,
+
+  // 未知异常
+  fail,
+}
+
+typedef NotifierPageWidgetBuilder<T extends BaseChangeNotifier> = Widget
+    Function(BuildContext context, PageDataModel model);
+
+/// 这个是配合 PageDataModel 类使用的
+class NotifierPageWidget<T extends BaseChangeNotifier> extends StatefulWidget {
+  NotifierPageWidget({
+    super.key,
+    required this.model,
+    required this.builder,
+  });
+
+  /// 需要监听的数据观察类
+  final PageDataModel? model;
+
+  final NotifierPageWidgetBuilder builder;
+
+  @override
+  _NotifierPageWidgetState<T> createState() => _NotifierPageWidgetState<T>();
+}
+
+class _NotifierPageWidgetState<T extends BaseChangeNotifier>
+    extends State<NotifierPageWidget<T>> {
+  PageDataModel? model;
+
+  /// 刷新UI
+  refreshUI() => setState(() {
+    model = widget.model;
+  });
+
+  /// 对数据进行绑定监听
+  @override
+  void initState() {
+    super.initState();
+
+    model = widget.model;
+
+    // 先清空一次已注册的Listener，防止重复触发
+    model?.removeListener(refreshUI);
+
+    // 添加监听
+    model?.addListener(refreshUI);
+  }
+
+  @override
+  void didUpdateWidget(covariant NotifierPageWidget<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.model != widget.model) {
+      // 先清空一次已注册的Listener，防止重复触发
+      oldWidget.model?.removeListener(refreshUI);
+
+      model = widget.model;
+
+      // 添加监听
+      model?.addListener(refreshUI);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    if (model?.type == NotifierResultType.notCheck) {
+      return widget.builder(context, model!);
+    }
+
+    if (model?.type == NotifierResultType.loading) {
+      return Center(
+        child: Text('加载中...'),
+      );
+    }
+
+    if (model?.type == NotifierResultType.success) {
+      if (model?.data == null) {
+        return Center(
+          child: Text('数据为空'),
+        );
+      }
+      if(model?.isPaging ?? false) {
+        var lists = model?.data?.datas as List<BasePagingItem>?;
+        if(lists?.isEmpty ?? false){
+          return Center(
+            child: Text('列表数据为空'),
+          );
+        };
+      }
+      return widget.builder(context, model!);
+    }
+
+    if (model?.type == NotifierResultType.unauthorized) {
+      return Center(
+        child: Text('业务不通过：${model?.errorMsg}'),
+      );
+    }
+
+    /// 异常抛出，会在终端会显示，可帮助开发阶段，快速定位异常所在，
+    /// 但会阻断，后续代码执行，建议 非开发阶段 关闭
+    if(EnvConfig.throwError) {
+      throw Exception('${model?.errorMsg}');
+    }
+
+    if (model?.type == NotifierResultType.dioError) {
+      return Center(
+        child: Text('dioError异常：${model?.errorMsg}'),
+      );
+    }
+
+    if (model?.type == NotifierResultType.fail) {
+      return Center(
+        child: Text('未知异常：${model?.errorMsg}'),
+      );
+    }
+
+    return Center(
+      child: Text('请联系客服：${model?.errorMsg}'),
+    );
+  }
+
+  @override
+  void dispose() {
+    widget.model?.removeListener(refreshUI);
+    super.dispose();
+  }
+}
+```
+**使用**
+```js
 class HomeView extends BaseStatefulPage<HomeViewModel> {
   HomeView({super.key});
 
