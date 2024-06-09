@@ -89,12 +89,12 @@ class HomeListModel extends BaseModel {
 
     ... ... 
 
-	ValueNotifier<int> tapNum = ValueNotifier<int>(0); // 点击次数
+    ValueNotifier<int> tapNum = ValueNotifier<int>(0); // 点击次数
 
-	@override
+    @override
     void onDispose() {
-	  tapNum.dispose();
-      super.onDispose();
+       tapNum.dispose();
+       super.onDispose();
     }
 
     ... ...
