@@ -225,7 +225,6 @@ class HomeRepository {
         HomeListModel model = HomeListModel.fromJson(response.data);
         model.vm = pageViewModel;
         pageViewModel.pageDataModel?.data = model;
-
       } else {
 
         /// 请求成功，但业务不通过，比如没有权限
@@ -233,7 +232,6 @@ class HomeRepository {
         pageViewModel.pageDataModel?.errorMsg = response.statusMessage;
       }
 
-      return pageViewModel;
     } on DioException catch (dioEx) {
       /// 请求异常
       pageViewModel.pageDataModel?.type = NotifierResultType.dioError;
@@ -263,25 +261,37 @@ class PersonalRepository {
     CancelToken? cancelToken,
   }) async {
 
-    Response response = await DioClient().doPost(
-      'user/register',
-      params: params,
-      cancelToken: cancelToken,
-    );
+    try {
+      Response response = await DioClient().doPost(
+        'user/register',
+        params: params,
+        cancelToken: cancelToken,
+      );
 
-    if(response.statusCode == REQUEST_SUCCESS) {
-      /// 请求成功
-      pageViewModel.pageDataModel?.type = NotifierResultType.success; // 请求成功
+      if(response.statusCode == REQUEST_SUCCESS) {
+        /// 请求成功
+        pageViewModel.pageDataModel?.type = NotifierResultType.success; // 请求成功
 
-      /// ViewModel 和 Model 相互持有
-      UserInfoModel model = UserInfoModel.fromJson(response.data)..isLogin = false;
-      model.vm = pageViewModel;
-      pageViewModel.pageDataModel?.data = model;
-    } else {
+        /// ViewModel 和 Model 相互持有
+        UserInfoModel model = UserInfoModel.fromJson(response.data)..isLogin = false;
+        model.vm = pageViewModel;
+        pageViewModel.pageDataModel?.data = model;
+      } else {
 
-      /// 请求成功，但业务不通过，比如没有权限
-      pageViewModel.pageDataModel?.type = NotifierResultType.unauthorized;
-      pageViewModel.pageDataModel?.errorMsg = response.statusMessage;
+        /// 请求成功，但业务不通过，比如没有权限
+        pageViewModel.pageDataModel?.type = NotifierResultType.unauthorized;
+        pageViewModel.pageDataModel?.errorMsg = response.statusMessage;
+      }
+
+    } on DioException catch (dioEx) {
+      /// 请求异常
+      pageViewModel.pageDataModel?.type = NotifierResultType.dioError;
+      pageViewModel.pageDataModel?.errorMsg = dioErrorConversionText(dioEx);
+
+    } catch (e) {
+      /// 未知异常
+      pageViewModel.pageDataModel?.type = NotifierResultType.fail;
+      pageViewModel.pageDataModel?.errorMsg = (e as Map).toString();
     }
 
     return pageViewModel;
@@ -293,25 +303,38 @@ class PersonalRepository {
     Map<String, dynamic>? params,
     CancelToken? cancelToken,
   }) async {
-    Response response = await DioClient().doPost(
-      'user/login',
-      params: params,
-      cancelToken: cancelToken,
-    );
 
-    if(response.statusCode == REQUEST_SUCCESS) {
-      /// 请求成功
-      pageViewModel.pageDataModel?.type = NotifierResultType.success;
+    try {
+      Response response = await DioClient().doPost(
+        'user/login',
+        params: params,
+        cancelToken: cancelToken,
+      );
 
-      /// ViewModel 和 Model 相互持有
-      UserInfoModel model = UserInfoModel.fromJson(response.data)..isLogin = true;
-      model.vm = pageViewModel;
-      pageViewModel.pageDataModel?.data = model;
-    } else {
+      if(response.statusCode == REQUEST_SUCCESS) {
+        /// 请求成功
+        pageViewModel.pageDataModel?.type = NotifierResultType.success;
 
-      /// 请求成功，但业务不通过，比如没有权限
-      pageViewModel.pageDataModel?.type = NotifierResultType.unauthorized;
-      pageViewModel.pageDataModel?.errorMsg = response.statusMessage;
+        /// ViewModel 和 Model 相互持有
+        UserInfoModel model = UserInfoModel.fromJson(response.data)..isLogin = true;
+        model.vm = pageViewModel;
+        pageViewModel.pageDataModel?.data = model;
+      } else {
+
+        /// 请求成功，但业务不通过，比如没有权限
+        pageViewModel.pageDataModel?.type = NotifierResultType.unauthorized;
+        pageViewModel.pageDataModel?.errorMsg = response.statusMessage;
+      }
+
+    } on DioException catch (dioEx) {
+      /// 请求异常
+      pageViewModel.pageDataModel?.type = NotifierResultType.dioError;
+      pageViewModel.pageDataModel?.errorMsg = dioErrorConversionText(dioEx);
+
+    } catch (e) {
+      /// 未知异常
+      pageViewModel.pageDataModel?.type = NotifierResultType.fail;
+      pageViewModel.pageDataModel?.errorMsg = (e as Map).toString();
     }
 
     return pageViewModel;
@@ -350,7 +373,6 @@ class MessageRepository {
         pageViewModel.pageDataModel?.errorMsg = response.statusMessage;
       }
 
-      return pageViewModel;
     } on DioException catch (dioEx) {
       /// 请求异常
       pageViewModel.pageDataModel?.type = NotifierResultType.dioError;
