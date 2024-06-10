@@ -1612,6 +1612,6 @@ MVVM：https://juejin.cn/post/7166503123983269901
 
 #  API
 
-玩Android的平台的开放 API；
+玩Android平台的开放 API；
 
 https://www.wanandroid.com/blog/show/2
