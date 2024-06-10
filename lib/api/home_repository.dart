@@ -25,7 +25,6 @@ class HomeRepository {
         HomeListModel model = HomeListModel.fromJson(response.data);
         model.vm = pageViewModel;
         pageViewModel.pageDataModel?.data = model;
-
       } else {
 
         /// 请求成功，但业务不通过，比如没有权限
@@ -33,7 +32,6 @@ class HomeRepository {
         pageViewModel.pageDataModel?.errorMsg = response.statusMessage;
       }
 
-      return pageViewModel;
     } on DioException catch (dioEx) {
       /// 请求异常
       pageViewModel.pageDataModel?.type = NotifierResultType.dioError;

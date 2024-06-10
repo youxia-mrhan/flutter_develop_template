@@ -33,7 +33,6 @@ class MessageRepository {
         pageViewModel.pageDataModel?.errorMsg = response.statusMessage;
       }
 
-      return pageViewModel;
     } on DioException catch (dioEx) {
       /// 请求异常
       pageViewModel.pageDataModel?.type = NotifierResultType.dioError;
