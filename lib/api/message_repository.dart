@@ -40,7 +40,7 @@ class MessageRepository {
     } catch (e) {
       /// 未知异常
       pageViewModel.pageDataModel?.type = NotifierResultType.fail;
-      pageViewModel.pageDataModel?.errorMsg = (e as Map).toString();
+      pageViewModel.pageDataModel?.errorMsg = e.toString();
     }
 
     return pageViewModel;
