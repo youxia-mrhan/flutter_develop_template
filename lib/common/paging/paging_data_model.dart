@@ -58,7 +58,14 @@ class PagingDataModel<DM extends BaseChangeNotifier, VM extends PageViewModel> {
   // 当前页 数据数量
   int size;
 
-  // 完整的数据
+  /// 响应的完整数据
+  /// 你可能还需要，响应数据的 其他字段，
+  ///
+  /// assert((){
+  ///    var mListModel = pageDataModel?.data as MessageListModel?; // 转化成对应的Model
+  ///    debugPrint('---pageCount：${mListModel?.pageCount}'); // 获取字段
+  ///    return true;
+  /// }());
   dynamic data;
 
   // 分页参数 字段，一般情况都是固定的，以防万一
