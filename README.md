@@ -1316,11 +1316,8 @@ abstract class BaseStatefulPageState<T extends BaseStatefulPage, VM extends Page
   @override
   void dispose() {
     /// 销毁顺序
-    /// 1、Model 销毁其持有的 ViewModel
-    /// 2、ViewModel 销毁其持有的 View
-    /// 3、View 销毁其持有的 ViewModel
-    /// 4、销毁监听App生命周期方法
 
+    /// 1、Model 销毁其持有的 ViewModel
     if(viewModel?.pageDataModel?.data is BaseModel?) {
       BaseModel? baseModel = viewModel?.pageDataModel?.data as BaseModel?;
       baseModel?.onDispose();
@@ -1329,9 +1326,15 @@ abstract class BaseStatefulPageState<T extends BaseStatefulPage, VM extends Page
       BasePagingModel? basePagingModel = viewModel?.pageDataModel?.data as BasePagingModel?;
       basePagingModel?.onDispose();
     }
+
+    /// 2、ViewModel 销毁其持有的 View
+    /// 3、ViewModel 销毁其持有的 Model
     viewModel?.onDispose();
+
+    /// 4、View 销毁其持有的 ViewModel
     viewModel = null;
 
+    /// 5、销毁监听App生命周期方法
     lifecycleListener?.dispose();
     super.dispose();
   }
