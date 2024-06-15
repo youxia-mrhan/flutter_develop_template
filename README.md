@@ -389,7 +389,7 @@ class MessageRepository {
 }
 ```
 
-剩下的 ResultFul API 风格请求，我就不一一演示了，**DioClient** 里都封装好了，昭葫芦画瓢就好。
+剩下的 ResultFul API 风格请求，我就不一一演示了，**DioClient** 里都封装好了，照葫芦画瓢就好。
 
 ResultFul API 风格\
 GET：从服务器获取一项或者多项数据\
