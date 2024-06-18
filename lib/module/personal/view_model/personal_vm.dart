@@ -6,13 +6,18 @@ import 'package:flutter_develop_template/common/mvvm/base_view_model.dart';
 import '../../../common/widget/notifier_widget.dart';
 import '../view/personal_v.dart';
 
-class PersonalViewModel extends PageViewModel{
+class PersonalViewModel extends PageViewModel<PersonalViewState> {
   CancelToken? cancelToken;
-  PersonalViewState? state;
 
   @override
   onCreate() {
-    state = viewState as PersonalViewState;
+
+    assert((){
+      /// 拿到 页面状态里的 对象、属性 等等
+      debugPrint('---runSwitchLogin：${state.runSwitchLogin}');
+      return true;
+    }());
+
     cancelToken = CancelToken();
     pageDataModel = PageDataModel();
   }

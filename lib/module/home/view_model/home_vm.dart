@@ -6,14 +6,18 @@ import 'package:flutter_develop_template/module/home/view/home_v.dart';
 
 import '../../../api/home_repository.dart';
 
-class HomeViewModel extends PageViewModel {
+class HomeViewModel extends PageViewModel<HomeViewState> {
   CancelToken? cancelToken;
-  HomeViewState? state;
 
   @override
   onCreate() {
-    /// 转化成 对应View 状态类型
-    state = viewState as HomeViewState;
+
+    assert((){
+      /// 拿到 页面状态里的 对象、属性 等等
+      debugPrint('---runSwitchLogin：${state.runSwitchLogin}');
+      return true;
+    }());
+
     cancelToken = CancelToken();
     pageDataModel = PageDataModel();
     requestData();

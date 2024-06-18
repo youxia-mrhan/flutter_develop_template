@@ -3,17 +3,17 @@ import 'package:flutter_develop_template/common/mvvm/base_view_model.dart';
 
 import '../view/order_v.dart';
 
-class OrderViewModel extends PageViewModel {
-
-  OrderViewState? state;
+class OrderViewModel extends PageViewModel<OrderViewState> {
 
   @override
   onCreate() {
-    state = (viewState as OrderViewState);
+
     assert((){
-      debugPrint('state: --- ${state?.paramsModel}');
+      /// 拿到 页面状态里的 对象、属性 等等
+      debugPrint('state: --- ${state.paramsModel}');
       return true;
     }());
+
   }
 
   @override

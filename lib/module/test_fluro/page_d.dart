@@ -66,13 +66,11 @@ class PageDViewState extends BaseStatefulPageState<PageDView,PageDViewModel> {
 
 }
 
-class PageDViewModel extends PageViewModel {
-
-  PageDViewState? state;
+class PageDViewModel extends PageViewModel<PageDViewState> {
 
   @override
   onCreate() {
-    state = viewState as PageDViewState;
+
   }
 
   @override

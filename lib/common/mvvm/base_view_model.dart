@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 import '../widget/notifier_widget.dart';
 import 'base_page.dart';
 
@@ -8,11 +10,15 @@ abstract class BaseViewModel {
 
 /// 页面继承的ViewModel，不直接使用 BaseViewModel，
 /// 是因为BaseViewModel基类里代码，还是不要太多为好，扩展创建新的子类就好
-abstract class PageViewModel extends BaseViewModel {
+abstract class PageViewModel<T extends State> extends BaseViewModel {
 
   /// 定义对应的 view
   BaseStatefulPageState? viewState;
 
+  /// 使用 直接拿它
+  T get state => viewState as T;
+
+  /// 页面数据model
   PageDataModel? pageDataModel;
 
   /// 尽量在onCreate方法中编写初始化逻辑

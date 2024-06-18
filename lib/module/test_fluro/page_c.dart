@@ -58,14 +58,11 @@ class PageCViewState extends BaseStatefulPageState<PageCView,PageCViewModel> {
 
 }
 
-class PageCViewModel extends PageViewModel {
-
-  PageCViewState? state;
+class PageCViewModel extends PageViewModel<PageCViewState> {
 
   @override
   onCreate() {
-    /// 将获取到的View 转化为 对应页面类型
-    state = viewState as PageCViewState;
+
   }
 
   @override

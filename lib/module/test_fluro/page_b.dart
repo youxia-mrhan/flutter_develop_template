@@ -74,13 +74,11 @@ class PageBViewState extends BaseStatefulPageState<PageBView,PageBViewModel> {
 
 }
 
-class PageBViewModel extends PageViewModel{
-
-  PageBViewState? state;
+class PageBViewModel extends PageViewModel<PageBViewState> {
 
   @override
   onCreate() {
-    state = viewState as PageBViewState;
+
   }
 
   @override

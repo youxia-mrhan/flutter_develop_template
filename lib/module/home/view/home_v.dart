@@ -16,6 +16,7 @@ class HomeView extends BaseStatefulPage<HomeViewModel> {
 }
 
 class HomeViewState extends BaseStatefulPageState<HomeView, HomeViewModel> {
+
   @override
   HomeViewModel viewBindingViewModel() {
     /// ViewModel 和 View 相互持有

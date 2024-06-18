@@ -7,15 +7,20 @@ import 'package:flutter_develop_template/common/paging/paging_data_model.dart';
 import '../../../common/widget/notifier_widget.dart';
 import '../view/message_v.dart';
 
-class MessageViewModel extends PageViewModel {
+class MessageViewModel extends PageViewModel<MessageViewState> {
 
   CancelToken? cancelToken;
   PagingDataModel? pagingDataModel;
-  MessageViewState? state;
 
   @override
   onCreate() {
-    state = viewState as MessageViewState;
+
+    assert((){
+      /// 拿到 页面状态里的 对象、属性 等等
+      debugPrint('---runSwitchLogin：${state.runSwitchLogin}');
+      return true;
+    }());
+
     cancelToken = CancelToken();
     pageDataModel = PageDataModel();
     pagingDataModel = PagingDataModel();

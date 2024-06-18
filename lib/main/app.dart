@@ -215,13 +215,11 @@ class AppMainPageState extends BaseStatefulPageState<AppMainPage,AppMainPageView
 
 }
 
-class AppMainPageViewModel extends PageViewModel {
-
-  AppMainPageState? state;
+class AppMainPageViewModel extends PageViewModel<AppMainPageState> {
 
   @override
   onCreate() {
-    state = viewState as AppMainPageState;
+
   }
 
   @override
