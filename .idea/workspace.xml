@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35f4bf16-554e-49c0-a4d5-701389847ae3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/mvvm/base_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/mvvm/base_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main/app.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/home/view/home_v.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/home/view/home_v.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/home/view_model/home_vm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/home/view_model/home_vm.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/message/view_model/message_vm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/message/view_model/message_vm.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/order/view_model/order_vm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/order/view_model/order_vm.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/personal/view_model/personal_vm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/personal/view_model/personal_vm.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/test_fluro/page_a.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/test_fluro/page_a.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/test_fluro/page_b.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/test_fluro/page_b.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/test_fluro/page_c.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/test_fluro/page_c.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/test_fluro/page_d.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/test_fluro/page_d.dart" afterDir="false" />
-    </list>
+    <list default="true" id="35f4bf16-554e-49c0-a4d5-701389847ae3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

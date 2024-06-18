@@ -168,15 +168,15 @@ class HomeViewState extends BaseStatefulPageState<HomeView, HomeViewModel> {
 #### ViewModel
 
 ```js
-class HomeViewModel extends PageViewModel {
+class HomeViewModel extends PageViewModel<HomeViewState> {
 
   HomeViewState? state;
 
   @override
   onCreate() {
-    /// 转化成 对应View 状态类型
-    state = viewState as HomeViewState;
-
+  
+    /// 拿到 页面状态里的 对象、属性 等等
+    debugPrint('---runSwitchLogin：${state.runSwitchLogin}');
     ... ... 
 
     /// 初始化 网络请求
@@ -1430,11 +1430,15 @@ abstract class BaseViewModel {
 
 /// 页面继承的ViewModel，不直接使用 BaseViewModel，
 /// 是因为BaseViewModel基类里代码，还是不要太多为好，扩展创建新的子类就好
-abstract class PageViewModel extends BaseViewModel {
+abstract class PageViewModel<T extends State> extends BaseViewModel {
 
   /// 定义对应的 view
   BaseStatefulPageState? viewState;
 
+  /// 使用 直接拿它
+  T get state => viewState as T;
+
+  /// 页面数据model
   PageDataModel? pageDataModel;
 
   /// 尽量在onCreate方法中编写初始化逻辑
