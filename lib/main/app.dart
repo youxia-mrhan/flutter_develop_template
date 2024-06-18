@@ -62,9 +62,9 @@ class App extends StatelessWidget {
         theme: ThemeData(
           // appBar主题
           appBarTheme: appBarTheme,
-          // 去掉水波纹效果
+          // 去除水波纹效果
           splashColor: Colors.transparent,
-          // 去掉长按效果
+          // 去除长按效果
           highlightColor: Colors.transparent,
           useMaterial3: true,
         ),
