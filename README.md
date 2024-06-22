@@ -630,7 +630,9 @@ class HomeViewState extends BaseStatefulPageState<HomeView, HomeViewModel> {
           builder: (context, value, _) {
             return Text(
               'Home：$value',
-              style: TextStyles.style_222222_20,
+              style: TextStyle(
+                fontSize: 20,
+              ),
             );
           },
         ),
