@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_develop_template/common/res/string/strings.dart';
 
 import '../common/router/routers.dart';
 import 'app.dart';
@@ -29,22 +30,22 @@ enum EnvTag {
 
 /// 环境配置实体
 class EnvConfig {
-  // 域名
+  /// 域名
   static String baseUrl = '';
 
-  // 开发环境
+  /// 开发环境
   static EnvTag envTag = EnvTag.develop;
 
-  // 是否开启抓包
+  /// 是否开启抓包
   static bool proxyEnable = false;
 
-  // 抓包工具的代理地址 + 端口
+  /// 抓包工具的代理地址 + 端口
   static String? caughtAddress;
 
-  // 平台
+  /// 平台
   static ApplicationPlatform platform = ApplicationPlatform.app;
 
-  // 是否有全局通知操作，比如切换用户
+  /// 是否有全局通知操作，比如切换用户
   static bool isGlobalNotification = false;
 
   /// 异常抛出，会在终端会显示，可帮助开发阶段，快速定位异常所在
@@ -80,20 +81,20 @@ class Application {
       ErrorWidget.builder = (FlutterErrorDetails flutterErrorDetails) {
         return Material(
           child: Center(
-            child: Text("请联系客服。"),
+            child: Text(Strings.pleaseService),
           ),
         );
       };
 
-      // 初始化路由
+      /// 初始化路由
       Routers.configureRouters();
 
-      // 运行App
+      /// 运行App
       runApp(App());
 
     }, (Object error, StackTrace stack) {
-      // 使用第三方服务（例如Sentry）上报错误
-      // Sentry.captureException(error, stackTrace: stackTrace);
+      /// 使用第三方服务（例如Sentry）上报错误
+      /// Sentry.captureException(error, stackTrace: stackTrace);
     });
   }
 

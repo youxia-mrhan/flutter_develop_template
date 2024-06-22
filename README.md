@@ -176,7 +176,7 @@ class HomeViewModel extends PageViewModel<HomeViewState> {
   onCreate() {
   
     /// 拿到 页面状态里的 对象、属性 等等
-    debugPrint('---runSwitchLogin：${state.runSwitchLogin}');
+    debugPrint('---executeSwitchLogin：${state.executeSwitchLogin}');
     ... ... 
 
     /// 初始化 网络请求
@@ -630,7 +630,7 @@ class HomeViewState extends BaseStatefulPageState<HomeView, HomeViewModel> {
           builder: (context, value, _) {
             return Text(
               'Home：$value',
-              style: TextStyle(fontSize: 20),
+              style: TextStyles.style_222222_20,
             );
           },
         ),
@@ -905,7 +905,7 @@ https://loveky.github.io/2018/07/18/how-flutter-inheritedwidget-works/
     // 正常业务流程是：从本地存储，拿到当前最新的用户ID，请求接口，我这里偷了个懒 😄
     // 直接使用随机数，模拟 不同用户ID
     if (operate == GlobalOperate.switchLogin) {
-      runSwitchLogin = true;
+      executeSwitchLogin = true;
 
       // 重新请求数据
       // 如果你想刷新的时候，显示loading，加上这个两行

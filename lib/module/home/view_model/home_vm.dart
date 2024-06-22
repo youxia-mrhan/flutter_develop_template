@@ -14,7 +14,7 @@ class HomeViewModel extends PageViewModel<HomeViewState> {
 
     assert((){
       /// 拿到 页面状态里的 对象、属性 等等
-      debugPrint('---runSwitchLogin：${state.runSwitchLogin}');
+      debugPrint('---executeSwitchLogin：${state.executeSwitchLogin}');
       return true;
     }());
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_develop_template/common/paging/paging_data_model.dart';
+import 'package:flutter_develop_template/common/res/string/strings.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 /// 封装 下拉刷新/上拉加载更多 组件
@@ -94,19 +95,19 @@ class _RefreshLoadWidgetState extends State<RefreshLoadWidget> {
       enablePullUp: true,
       header: widget.header ??
           ClassicHeader(
-            idleText: "下拉刷新",
-            refreshingText: "刷新中...",
-            completeText: "加载成功",
-            releaseText: "松开立即刷新",
-            failedText: '刷新失败',
+            idleText: Strings.pullDownToRefresh,
+            refreshingText: Strings.refreshing,
+            completeText: Strings.loadedSuccess,
+            releaseText: Strings.releaseToRefreshImmediately,
+            failedText: Strings.refreshFailed,
           ),
       footer: widget.footer ??
           ClassicFooter(
-            idleText: "上拉加载",
-            loadingText: "加载中…",
-            canLoadingText: "松手开始加载数据",
-            failedText: "加载失败",
-            noDataText: "没有更多数据了",
+            idleText: Strings.pullUpLoad,
+            loadingText: Strings.loading,
+            canLoadingText: Strings.letGoLoading,
+            failedText: Strings.failedLoad,
+            noDataText: Strings.noMoreData,
             // 没有内容的文字
             noMoreIcon: Icon(Icons.data_array), // 没有内容的图标
           ),

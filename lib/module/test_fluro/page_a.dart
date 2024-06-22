@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_develop_template/common/mvvm/base_page.dart';
 import 'package:flutter_develop_template/common/mvvm/base_view_model.dart';
+import 'package:flutter_develop_template/common/res/string/strings.dart';
 import 'package:flutter_develop_template/common/router/navigator_util.dart';
 import 'package:flutter_develop_template/main/app.dart';
 
@@ -45,7 +46,7 @@ class PageAViewState extends BaseStatefulPageState<PageAView, PageAViewModel> {
   Widget appBuild(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('PageA'),
+        title: Text(Strings.pageA),
       ),
       body: SizedBox(
         width: media!.size.width,
@@ -65,19 +66,19 @@ class PageAViewState extends BaseStatefulPageState<PageAView, PageAViewModel> {
               onPressed: () {
                 NavigatorUtil.push(context, Routers.pageC, replace: true);
               },
-              child: Text('前往PageC，并销毁当前页面'),
+              child: Text(Strings.toPageCDestroyCurrent),
             ),
             ElevatedButton(
               onPressed: () {
                 NavigatorUtil.push(context, Routers.pageD);
               },
-              child: Text('路由拦截 从PageA前往PageD'),
+              child: Text(Strings.routeInterceptFromPageAtoPageD),
             ),
             ElevatedButton(
               onPressed: () {
                 NavigatorUtil.back(context, arguments: '我是PageA页的Pop返回值');
               },
-              child: Text('返回上一页'),
+              child: Text(Strings.backPreviousPage),
             ),
           ],
         ),

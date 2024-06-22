@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_develop_template/common/mvvm/base_page.dart';
 import 'package:flutter_develop_template/common/mvvm/base_view_model.dart';
+import 'package:flutter_develop_template/common/res/string/strings.dart';
 
 import '../../common/router/navigator_util.dart';
 import '../../common/router/routers.dart';
@@ -35,7 +36,7 @@ class PageCViewState extends BaseStatefulPageState<PageCView,PageCViewModel> {
   Widget appBuild(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('PageC'),
+        title: Text(Strings.pageC),
       ),
       body: SizedBox(
         width: media!.size.width,
@@ -48,7 +49,7 @@ class PageCViewState extends BaseStatefulPageState<PageCView,PageCViewModel> {
               onPressed: () {
                 NavigatorUtil.push(context,Routers.pageD,replace:true);
               },
-              child: Text('前往PageD'),
+              child: Text(Strings.toPageD),
             ),
           ],
         ),

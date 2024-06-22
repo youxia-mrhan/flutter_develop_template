@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_develop_template/common/mvvm/base_page.dart';
 import 'package:flutter_develop_template/common/mvvm/base_view_model.dart';
 
+import '../../common/res/string/strings.dart';
 import '../../common/router/navigator_util.dart';
 import '../../main/app.dart';
 
@@ -34,7 +35,7 @@ class PageDViewState extends BaseStatefulPageState<PageDView,PageDViewModel> {
   Widget appBuild(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('PageD'),
+        title: Text(Strings.pageD),
       ),
       body: SizedBox(
         width: media!.size.width,
@@ -56,7 +57,7 @@ class PageDViewState extends BaseStatefulPageState<PageDView,PageDViewModel> {
                 /// 这种是 按照 栈 先进后出的原则，回退到根页面
                 NavigatorUtil.back(context,toRoot: true);
               },
-              child: Text('前往首页，并销毁所有页面'),
+              child: Text(Strings.toHomeDestroyAll),
             ),
           ],
         ),

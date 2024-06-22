@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_develop_template/common/mvvm/base_change_notifier.dart';
 import 'package:flutter_develop_template/common/paging/paging_data_model.dart';
+import 'package:flutter_develop_template/common/res/string/strings.dart';
 import 'package:flutter_develop_template/main/application.dart';
 
 import '../mvvm/base_view_model.dart';
@@ -170,21 +171,21 @@ class _NotifierPageWidgetState<T extends BaseChangeNotifier>
 
     if (model?.type == NotifierResultType.loading) {
       return Center(
-        child: Text('加载中...'),
+        child: Text(Strings.loading),
       );
     }
 
     if (model?.type == NotifierResultType.success) {
       if (model?.data == null) {
         return Center(
-          child: Text('数据为空'),
+          child: Text(Strings.dataIsEmpty),
         );
       }
       if(model?.isPaging ?? false) {
         var lists = model?.data?.datas as List<BasePagingItem>?;
         if(lists?.isEmpty ?? false){
           return Center(
-            child: Text('列表数据为空'),
+            child: Text(Strings.listDataIsEmpty),
           );
         };
       }
@@ -193,7 +194,7 @@ class _NotifierPageWidgetState<T extends BaseChangeNotifier>
 
     if (model?.type == NotifierResultType.unauthorized) {
       return Center(
-        child: Text('业务不通过：${model?.errorMsg}'),
+        child: Text('${Strings.businessDoesNotPass}：${model?.errorMsg}'),
       );
     }
 
@@ -205,18 +206,18 @@ class _NotifierPageWidgetState<T extends BaseChangeNotifier>
 
     if (model?.type == NotifierResultType.dioError) {
       return Center(
-        child: Text('dioError异常：${model?.errorMsg}'),
+        child: Text('${Strings.dioErrorAnomaly}：${model?.errorMsg}'),
       );
     }
 
     if (model?.type == NotifierResultType.fail) {
       return Center(
-        child: Text('未知异常：${model?.errorMsg}'),
+        child: Text('${Strings.unknownAnomaly}：${model?.errorMsg}'),
       );
     }
 
     return Center(
-      child: Text('请联系客服：${model?.errorMsg}'),
+      child: Text('${Strings.pleaseService}：${model?.errorMsg}'),
     );
   }
 
@@ -286,7 +287,7 @@ class _NotifierWidgetState<T extends BaseChangeNotifier>
   Widget build(BuildContext context) {
     if (data == null) {
       return Center(
-        child: Text('加载中...'),
+        child: Text(Strings.loading),
       );
     }
     return widget.builder(context, data);

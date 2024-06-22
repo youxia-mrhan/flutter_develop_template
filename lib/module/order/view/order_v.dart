@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_develop_template/common/mvvm/base_page.dart';
+import 'package:flutter_develop_template/common/res/string/strings.dart';
 import 'package:flutter_develop_template/common/router/routers.dart';
 import 'package:flutter_develop_template/common/router/navigator_util.dart';
-
+import '../../../common/res/style/color_styles.dart';
+import '../../../common/res/style/text_styles.dart';
 import '../../../common/widget/global_notification_widget.dart';
 import '../view_model/order_vm.dart';
 
@@ -38,7 +40,7 @@ class OrderViewState extends BaseStatefulPageState<OrderView, OrderViewModel> {
     return OrderViewModel()..viewState = this;
   }
 
-  bool runSwitchLogin = false;
+  bool executeSwitchLogin = false;
 
   @override
   void didChangeDependencies() {
@@ -50,7 +52,7 @@ class OrderViewState extends BaseStatefulPageState<OrderView, OrderViewModel> {
     }());
 
     if (operate == GlobalOperate.switchLogin) {
-      runSwitchLogin = true;
+      executeSwitchLogin = true;
       // 重新请求数据
       // viewModel.requestData();
     }
@@ -62,8 +64,8 @@ class OrderViewState extends BaseStatefulPageState<OrderView, OrderViewModel> {
       appBar: AppBar(
         backgroundColor: AppBarTheme.of(context).backgroundColor,
         title: Text(
-          'Order',
-          style: TextStyle(fontSize: 20),
+          Strings.order,
+          style: TextStyles.style_222222_20,
         ),
       ),
       body: Stack(
@@ -102,7 +104,7 @@ class OrderViewState extends BaseStatefulPageState<OrderView, OrderViewModel> {
                           }());
                     });
                   },
-                  child: Text('携带 非对象类型 前往PageA'),
+                  child: Text(Strings.noObjectToPageA),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -124,21 +126,21 @@ class OrderViewState extends BaseStatefulPageState<OrderView, OrderViewModel> {
                       }());
                     });
                   },
-                  child: Text('携带 对象类型 前往PageB'),
+                  child: Text(Strings.objectToPageB),
                 ),
               ],
             ),
           ),
           Container(
-            color: Colors.green,
-            child: runSwitchLogin
+            color: ColorStyles.color_388E3C,
+            child: executeSwitchLogin
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('执行了切换用户操作'),
+                      Text(Strings.executeSwitchUser),
                       IconButton(
                           onPressed: () {
-                            runSwitchLogin = false;
+                            executeSwitchLogin = false;
                             setState(() {});
                           },
                           icon: Icon(Icons.close))

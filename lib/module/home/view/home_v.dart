@@ -2,9 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_develop_template/common/mvvm/base_page.dart';
+import 'package:flutter_develop_template/common/res/string/strings.dart';
 import 'package:flutter_develop_template/common/widget/notifier_widget.dart';
 import 'package:flutter_develop_template/module/home/view_model/home_vm.dart';
 
+import '../../../common/res/style/color_styles.dart';
+import '../../../common/res/style/text_styles.dart';
 import '../../../common/widget/global_notification_widget.dart';
 import '../model/home_list_m.dart';
 
@@ -41,7 +44,7 @@ class HomeViewState extends BaseStatefulPageState<HomeView, HomeViewModel> {
     super.dispose();
   }
 
-  bool runSwitchLogin = false;
+  bool executeSwitchLogin = false;
 
   @override
   void didChangeDependencies() {
@@ -56,7 +59,7 @@ class HomeViewState extends BaseStatefulPageState<HomeView, HomeViewModel> {
     // 正常业务流程是：从本地存储，拿到当前最新的用户ID，请求接口，我这里偷了个懒 😄
     // 直接使用随机数，模拟 不同用户ID
     if (operate == GlobalOperate.switchLogin) {
-      runSwitchLogin = true;
+      executeSwitchLogin = true;
 
       // 重新请求数据
       // 如果你想刷新的时候，显示loading，加上这个两行
@@ -79,8 +82,8 @@ class HomeViewState extends BaseStatefulPageState<HomeView, HomeViewModel> {
           valueListenable: tapNum,
           builder: (context, value, _) {
             return Text(
-              'Home：$value',
-              style: TextStyle(fontSize: 20),
+              '${Strings.home}：$value',
+              style: TextStyles.style_222222_20,
             );
           },
         ),
@@ -132,15 +135,15 @@ class HomeViewState extends BaseStatefulPageState<HomeView, HomeViewModel> {
                       );
                     }),
                 Container(
-                  color: Colors.green,
-                  child: runSwitchLogin
+                  color: ColorStyles.color_388E3C,
+                  child: executeSwitchLogin
                       ? Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('执行了切换用户操作'),
+                      Text(Strings.executeSwitchUser),
                       IconButton(
                           onPressed: () {
-                            runSwitchLogin = false;
+                            executeSwitchLogin = false;
                             setState(() {});
                           },
                           icon: Icon(Icons.close))

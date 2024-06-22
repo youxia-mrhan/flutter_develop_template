@@ -8,6 +8,8 @@ import 'package:flutter_develop_template/common/router/routers.dart';
 import 'package:flutter_develop_template/common/widget/global_notification_widget.dart';
 import 'package:flutter_develop_template/module/message/view/message_v.dart';
 
+import '../common/res/style/color_styles.dart';
+import '../common/res/style/theme_styles.dart';
 import '../module/home/view/home_v.dart';
 import '../module/order/view/order_v.dart';
 import '../module/personal/view/personal_v.dart';
@@ -41,15 +43,6 @@ class App extends StatelessWidget {
     media ??= MediaQuery.of(context);
     pageRouteObserver ??= PageRouteObserver();
 
-    /// 初始化 主题
-
-    /// AppBar 主题
-    final AppBarTheme appBarTheme = AppBarTheme(
-      backgroundColor: Colors.blue
-    );
-
-    // 其他主题 ... ...
-
     return GlobalOperateProvider(
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -59,15 +52,7 @@ class App extends StatelessWidget {
         navigatorKey: navigatorKey,
         // 使用路由找不到页面时，就会执行 onGenerateRoute
         onGenerateRoute: Routers.router.generator,
-        theme: ThemeData(
-          // appBar主题
-          appBarTheme: appBarTheme,
-          // 去除水波纹效果
-          splashColor: Colors.transparent,
-          // 去除长按效果
-          highlightColor: Colors.transparent,
-          useMaterial3: true,
-        ),
+        theme: ThemeStyles.defaultTheme,
         // PopScope：监听返回键
         home: PopScope(
             // WillPopScope 3.16中过时，使用PopScope替换
@@ -205,9 +190,9 @@ class AppMainPageState extends BaseStatefulPageState<AppMainPage,AppMainPageView
         currentIndex: bottomSelectedIndex,
         onTap: bottomTap,
         items: buildBottomNavBarItems(),
-        unselectedItemColor: Colors.blue, // 未选中状态下的颜色
+        unselectedItemColor: ColorStyles.color_1E88E5, // 未选中状态下的颜色
         unselectedFontSize: 14, // 未选中状态下的字体大小
-        selectedItemColor: Colors.red, // 选中状态下的颜色
+        selectedItemColor: ColorStyles.color_EA5034, // 选中状态下的颜色
         selectedFontSize: 14, // 选中状态下的字体大小
       ),
     );

@@ -9,7 +9,20 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35f4bf16-554e-49c0-a4d5-701389847ae3" name="Changes" comment="" />
+    <list default="true" id="35f4bf16-554e-49c0-a4d5-701389847ae3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/common/style/color_styles.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/style/text_styles.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/style/theme_styles.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/module/home/view/test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/util/global.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/util/global.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main/app.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main/application.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main/application.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/module/home/view/home_v.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/home/view/home_v.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/module/message/view/message_v.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/message/view/message_v.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/module/order/view/order_v.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/order/view/order_v.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/module/personal/view/personal_v.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/personal/view/personal_v.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,6 +54,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2hIoaaDLy2rNjk41QEhNJrcC8A9" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>

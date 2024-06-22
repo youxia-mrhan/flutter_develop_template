@@ -8,6 +8,9 @@ import 'package:flutter_develop_template/common/widget/notifier_widget.dart';
 import 'package:flutter_develop_template/main/app.dart';
 import 'package:flutter_develop_template/module/personal/model/user_info_m.dart';
 
+import '../../../common/res/string/strings.dart';
+import '../../../common/res/style/color_styles.dart';
+import '../../../common/res/style/text_styles.dart';
 import '../../../common/util/global.dart';
 import '../view_model/personal_vm.dart';
 
@@ -31,7 +34,7 @@ class PersonalViewState extends BaseStatefulPageState<PersonalView, PersonalView
     return PersonalViewModel()..viewState = this;
   }
 
-  bool runSwitchLogin = false;
+  bool executeSwitchLogin = false;
 
   @override
   void didChangeDependencies() {
@@ -43,7 +46,7 @@ class PersonalViewState extends BaseStatefulPageState<PersonalView, PersonalView
     }());
 
     if (operate == GlobalOperate.switchLogin) {
-      runSwitchLogin = true;
+      executeSwitchLogin = true;
       // 重新请求数据
       // viewModel.requestData();
     }
@@ -62,7 +65,7 @@ class PersonalViewState extends BaseStatefulPageState<PersonalView, PersonalView
                 margin: EdgeInsets.only(top: kToolbarHeight + media!.padding.top),
                 alignment: Alignment.center,
                 child: ElevatedButton(
-                  child: Text('注册'),
+                  child: Text(Strings.register),
                   onPressed: () {
                     // 如果你想刷新的时候，显示loading，加上这个两行
                     viewModel?.pageDataModel?.type = NotifierResultType.loading;
@@ -88,7 +91,7 @@ class PersonalViewState extends BaseStatefulPageState<PersonalView, PersonalView
                 margin: EdgeInsets.only(top: kToolbarHeight + media!.padding.top + 100),
                 alignment: Alignment.center,
                 child: ElevatedButton(
-                  child: Text('登陆'),
+                  child: Text(Strings.login),
                   onPressed: () {
                     // 如果你想刷新的时候，显示loading，加上这个两行
                     viewModel?.pageDataModel?.type = NotifierResultType.loading;
@@ -108,7 +111,7 @@ class PersonalViewState extends BaseStatefulPageState<PersonalView, PersonalView
                 margin: EdgeInsets.only(top: kToolbarHeight + media!.padding.top + 200),
                 alignment: Alignment.center,
                 child: ElevatedButton(
-                  child: Text('切换用户'),
+                  child: Text(Strings.switchUser),
                   onPressed: () {
                     // 更新本地存储的用户ID，（常用的本地存储库：shared_preferences）
                     // ... ...
@@ -121,15 +124,15 @@ class PersonalViewState extends BaseStatefulPageState<PersonalView, PersonalView
             ),
             Container(
               margin: EdgeInsets.only(top: kToolbarHeight + media!.padding.top),
-              color: Colors.green,
-              child: runSwitchLogin
+              color: ColorStyles.color_388E3C,
+              child: executeSwitchLogin
                   ? Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('执行了切换用户操作'),
+                  Text(Strings.switchUser),
                   IconButton(
                       onPressed: () {
-                        runSwitchLogin = false;
+                        executeSwitchLogin = false;
                         setState(() {});
                       },
                       icon: Icon(Icons.close))
@@ -159,10 +162,10 @@ class PersonalViewState extends BaseStatefulPageState<PersonalView, PersonalView
               model: viewModel?.pageDataModel,
               builder: (context, dataModel) {
               final data = dataModel.data as UserInfoModel?;
-              String title = (data?.isLogin ?? false) ? '登陆成功：${data?.username} 欢迎您' : '注册成功：${data?.username} 欢迎您';
+              String title = (data?.isLogin ?? false) ? '${Strings.loginSuccess}：${data?.username} ${Strings.welcome}' : '${Strings.registerSuccess}：${data?.username} ${Strings.welcome}';
               return Text(
-                (data?.username?.isEmpty ?? true) ?'Personal' : title,
-                style: TextStyle(fontSize: 20),
+                (data?.username?.isEmpty ?? true) ? Strings.personal : title,
+                style: TextStyles.style_222222_20,
               );
             }
           );
