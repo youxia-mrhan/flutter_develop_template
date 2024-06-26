@@ -1280,7 +1280,7 @@ abstract class BaseStatefulPageState<T extends BaseStatefulPage, VM extends Page
   /// 监听状态
   onStateChange(AppLifecycleState state) => mLog('app_state：$state');
 
-  /// =============================== 根据应用状态的产生的各种回调 ===============================
+  /// =============================== 根据应用状态产生的各种回调 ===============================
 
   /// 可见，并且可以响应用户操作时的回调
   /// 比如从应用后台调度到前台时，在 onShow() 后面 执行
