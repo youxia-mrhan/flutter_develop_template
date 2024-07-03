@@ -38,6 +38,7 @@ class PersonalRepository extends BaseRepository {
             cancelToken: cancelToken,
           ));
 
+
 /// 这是不使用 httpPageRequest 的原始写法，如果业务复杂，可能还是需要在原始写法上，扩展
 // /// 注册
 // Future<PageViewModel> registerUser({
