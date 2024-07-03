@@ -4,6 +4,7 @@ import 'package:flutter_develop_template/api/personal_repository.dart';
 import 'package:flutter_develop_template/common/mvvm/base_view_model.dart';
 
 import '../../../common/widget/notifier_widget.dart';
+import '../model/user_info_m.dart';
 import '../view/personal_v.dart';
 
 class PersonalViewModel extends PageViewModel<PersonalViewState> {
@@ -44,6 +45,7 @@ class PersonalViewModel extends PageViewModel<PersonalViewState> {
         params: params
     );
 
+    (viewModel.pageDataModel?.data as UserInfoModel?)?.isLogin = false;
     pageDataModel = viewModel.pageDataModel;
     pageDataModel?.refreshState();
     return Future<PageViewModel>.value(viewModel);
@@ -56,6 +58,7 @@ class PersonalViewModel extends PageViewModel<PersonalViewState> {
         cancelToken: cancelToken,
         params: params
     );
+    (viewModel.pageDataModel?.data as UserInfoModel?)?.isLogin = true;
     pageDataModel = viewModel.pageDataModel;
     pageDataModel?.refreshState();
     return Future<PageViewModel>.value(viewModel);

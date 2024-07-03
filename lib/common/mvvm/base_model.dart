@@ -7,4 +7,5 @@ class BaseModel<VM extends PageViewModel> {
   void onDispose() {
     vm = null;
   }
+
 }

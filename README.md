@@ -203,40 +203,43 @@ class HomeViewModel extends PageViewModel<HomeViewState> {
 
 ## 网络请求
 
-### Get请求
+### BaseRepository
 
-```js
-class HomeRepository {
+``````
+typedef JsonCoverEntity<T extends BaseModel> = T Function(Map<String, dynamic> json);
 
-  /// 获取首页数据
-  Future<PageViewModel> getHomeData({
+class BaseRepository {
+
+  /// 统一处理 响应数据，可以避免写 重复代码，但如果业务复杂，可能还是需要在原始写法上，扩展
+
+  /// 普通页面（非分页）数据请求 统一处理
+  Future<PageViewModel> httpPageRequest({
     required PageViewModel pageViewModel,
+    required Future<Response> future,
+    required JsonCoverEntity jsonCoverEntity,
     CancelToken? cancelToken,
     int curPage = 0,
   }) async {
     try {
-      Response response = await DioClient().doGet('project/list/$curPage/json?cid=294', cancelToken: cancelToken);
+      Response response = await future;
 
-      if(response.statusCode == REQUEST_SUCCESS) {
+      if (response.statusCode == REQUEST_SUCCESS) {
         /// 请求成功
         pageViewModel.pageDataModel?.type = NotifierResultType.success;
 
         /// ViewModel 和 Model 相互持有
-        HomeListModel model = HomeListModel.fromJson(response.data);
+        dynamic model = jsonCoverEntity(response.data);
         model.vm = pageViewModel;
         pageViewModel.pageDataModel?.data = model;
       } else {
-
         /// 请求成功，但业务不通过，比如没有权限
         pageViewModel.pageDataModel?.type = NotifierResultType.unauthorized;
         pageViewModel.pageDataModel?.errorMsg = response.statusMessage;
       }
-
     } on DioException catch (dioEx) {
       /// 请求异常
       pageViewModel.pageDataModel?.type = NotifierResultType.dioError;
       pageViewModel.pageDataModel?.errorMsg = dioErrorConversionText(dioEx);
-
     } catch (e) {
       /// 未知异常
       pageViewModel.pageDataModel?.type = NotifierResultType.fail;
@@ -246,118 +249,18 @@ class HomeRepository {
     return pageViewModel;
   }
 
-}
-```
-
-### Post请求
-
-```js
-class PersonalRepository {
-
-  /// 注册
-  Future<PageViewModel> registerUser({
+  /// 分页数据请求 统一处理
+  Future<PageViewModel> httpPagingRequest({
     required PageViewModel pageViewModel,
-    Map<String, dynamic>? params,
-    CancelToken? cancelToken,
-  }) async {
-
-    try {
-      Response response = await DioClient().doPost(
-        'user/register',
-        params: params,
-        cancelToken: cancelToken,
-      );
-
-      if(response.statusCode == REQUEST_SUCCESS) {
-        /// 请求成功
-        pageViewModel.pageDataModel?.type = NotifierResultType.success; // 请求成功
-
-        /// ViewModel 和 Model 相互持有
-        UserInfoModel model = UserInfoModel.fromJson(response.data)..isLogin = false;
-        model.vm = pageViewModel;
-        pageViewModel.pageDataModel?.data = model;
-      } else {
-
-        /// 请求成功，但业务不通过，比如没有权限
-        pageViewModel.pageDataModel?.type = NotifierResultType.unauthorized;
-        pageViewModel.pageDataModel?.errorMsg = response.statusMessage;
-      }
-
-    } on DioException catch (dioEx) {
-      /// 请求异常
-      pageViewModel.pageDataModel?.type = NotifierResultType.dioError;
-      pageViewModel.pageDataModel?.errorMsg = dioErrorConversionText(dioEx);
-
-    } catch (e) {
-      /// 未知异常
-      pageViewModel.pageDataModel?.type = NotifierResultType.fail;
-      pageViewModel.pageDataModel?.errorMsg = e.toString();
-    }
-
-    return pageViewModel;
-  }
-
-  /// 登陆
-  Future<PageViewModel> loginUser({
-    required PageViewModel pageViewModel,
-    Map<String, dynamic>? params,
-    CancelToken? cancelToken,
-  }) async {
-
-    try {
-      Response response = await DioClient().doPost(
-        'user/login',
-        params: params,
-        cancelToken: cancelToken,
-      );
-
-      if(response.statusCode == REQUEST_SUCCESS) {
-        /// 请求成功
-        pageViewModel.pageDataModel?.type = NotifierResultType.success;
-
-        /// ViewModel 和 Model 相互持有
-        UserInfoModel model = UserInfoModel.fromJson(response.data)..isLogin = true;
-        model.vm = pageViewModel;
-        pageViewModel.pageDataModel?.data = model;
-      } else {
-
-        /// 请求成功，但业务不通过，比如没有权限
-        pageViewModel.pageDataModel?.type = NotifierResultType.unauthorized;
-        pageViewModel.pageDataModel?.errorMsg = response.statusMessage;
-      }
-
-    } on DioException catch (dioEx) {
-      /// 请求异常
-      pageViewModel.pageDataModel?.type = NotifierResultType.dioError;
-      pageViewModel.pageDataModel?.errorMsg = dioErrorConversionText(dioEx);
-
-    } catch (e) {
-      /// 未知异常
-      pageViewModel.pageDataModel?.type = NotifierResultType.fail;
-      pageViewModel.pageDataModel?.errorMsg = e.toString();
-    }
-
-    return pageViewModel;
-  }
-
-}
-```
-
-### 分页数据请求
-
-```js
-class MessageRepository {
-
-  /// 分页列表
-  Future<PageViewModel> getMessageData({
-    required PageViewModel pageViewModel,
+    required Future<Response> future,
+    required JsonCoverEntity jsonCoverEntity,
     CancelToken? cancelToken,
     int curPage = 0,
   }) async {
     try {
-      Response response = await DioClient().doGet('article/list/$curPage/json', cancelToken: cancelToken);
+      Response response = await future;
 
-      if(response.statusCode == REQUEST_SUCCESS) {
+      if (response.statusCode == REQUEST_SUCCESS) {
         /// 请求成功
         pageViewModel.pageDataModel?.type = NotifierResultType.success;
 
@@ -365,14 +268,14 @@ class MessageRepository {
         pageViewModel.pageDataModel?.isPaging = true;
 
         /// 分页代码
-        pageViewModel.pageDataModel?.correlationPaging(pageViewModel, MessageListModel.fromJson(response.data));
+        /// ViewModel 和 Model 相互持有代码，写着 correlationPaging() 里面
+        pageViewModel.pageDataModel?.correlationPaging(
+            pageViewModel, jsonCoverEntity(response.data) as dynamic);
       } else {
-
         /// 请求成功，但业务不通过，比如没有权限
         pageViewModel.pageDataModel?.type = NotifierResultType.unauthorized;
         pageViewModel.pageDataModel?.errorMsg = response.statusMessage;
       }
-
     } on DioException catch (dioEx) {
       /// 请求异常
       pageViewModel.pageDataModel?.type = NotifierResultType.dioError;
@@ -385,6 +288,259 @@ class MessageRepository {
 
     return pageViewModel;
   }
+
+}
+``````
+
+
+
+### Get请求
+
+```js
+class HomeRepository extends BaseRepository {
+
+  /// 获取首页数据
+  Future<PageViewModel> getHomeData({
+    required PageViewModel pageViewModel,
+    CancelToken? cancelToken,
+    int curPage = 0,
+  }) async =>
+      httpPageRequest(
+          pageViewModel: pageViewModel,
+          jsonCoverEntity: HomeListModel.fromJson,
+          future: DioClient().doGet('project/list/$curPage/json?cid=294', cancelToken: cancelToken),
+          cancelToken: cancelToken,
+          curPage: curPage);
+
+
+/// 这是不使用 httpPageRequest 的原始写法，如果业务复杂，可能还是需要在原始写法上，扩展
+// /// 获取首页数据
+// Future<PageViewModel> getHomeData({
+//   required PageViewModel pageViewModel,
+//   CancelToken? cancelToken,
+//   int curPage = 0,
+// }) async {
+//   try {
+//     Response response = await DioClient().doGet('project/list/$curPage/json?cid=294', cancelToken: cancelToken);
+//
+//     if(response.statusCode == REQUEST_SUCCESS) {
+//       /// 请求成功
+//       pageViewModel.pageDataModel?.type = NotifierResultType.success;
+//
+//       /// ViewModel 和 Model 相互持有
+//       HomeListModel model = HomeListModel.fromJson(response.data);
+//       model.vm = pageViewModel;
+//       pageViewModel.pageDataModel?.data = model;
+//     } else {
+//
+//       /// 请求成功，但业务不通过，比如没有权限
+//       pageViewModel.pageDataModel?.type = NotifierResultType.unauthorized;
+//       pageViewModel.pageDataModel?.errorMsg = response.statusMessage;
+//     }
+//
+//   } on DioException catch (dioEx) {
+//     /// 请求异常
+//     pageViewModel.pageDataModel?.type = NotifierResultType.dioError;
+//     pageViewModel.pageDataModel?.errorMsg = dioErrorConversionText(dioEx);
+//
+//   } catch (e) {
+//     /// 未知异常
+//     pageViewModel.pageDataModel?.type = NotifierResultType.fail;
+//     pageViewModel.pageDataModel?.errorMsg = e.toString();
+//   }
+//
+//   return pageViewModel;
+// }
+}
+```
+
+
+
+### Post请求
+
+```js
+class PersonalRepository extends BaseRepository {
+
+  /// 注册
+  Future<PageViewModel> registerUser({
+    required PageViewModel pageViewModel,
+    Map<String, dynamic>? params,
+    CancelToken? cancelToken,
+  }) async =>
+      httpPageRequest(
+          pageViewModel: pageViewModel,
+          cancelToken: cancelToken,
+          jsonCoverEntity: UserInfoModel.fromJson,
+          future: DioClient().doPost(
+            'user/register',
+            params: params,
+            cancelToken: cancelToken,
+          ));
+
+  /// 登陆
+  Future<PageViewModel> loginUser({
+    required PageViewModel pageViewModel,
+    Map<String, dynamic>? params,
+    CancelToken? cancelToken,
+  }) async =>
+      httpPageRequest(
+          pageViewModel: pageViewModel,
+          cancelToken: cancelToken,
+          jsonCoverEntity: UserInfoModel.fromJson,
+          future: DioClient().doPost(
+            'user/login',
+            params: params,
+            cancelToken: cancelToken,
+          ));
+
+/// 这是不使用 httpPageRequest 的原始写法，如果业务复杂，可能还是需要在原始写法上，扩展
+// /// 注册
+// Future<PageViewModel> registerUser({
+//   required PageViewModel pageViewModel,
+//   Map<String, dynamic>? params,
+//   CancelToken? cancelToken,
+// }) async {
+//
+//   try {
+//     Response response = await DioClient().doPost(
+//       'user/register',
+//       params: params,
+//       cancelToken: cancelToken,
+//     );
+//
+//     if(response.statusCode == REQUEST_SUCCESS) {
+//       /// 请求成功
+//       pageViewModel.pageDataModel?.type = NotifierResultType.success; // 请求成功
+//
+//       /// ViewModel 和 Model 相互持有
+//       UserInfoModel model = UserInfoModel.fromJson(response.data);
+//       model.vm = pageViewModel;
+//       pageViewModel.pageDataModel?.data = model;
+//     } else {
+//
+//       /// 请求成功，但业务不通过，比如没有权限
+//       pageViewModel.pageDataModel?.type = NotifierResultType.unauthorized;
+//       pageViewModel.pageDataModel?.errorMsg = response.statusMessage;
+//     }
+//
+//   } on DioException catch (dioEx) {
+//     /// 请求异常
+//     pageViewModel.pageDataModel?.type = NotifierResultType.dioError;
+//     pageViewModel.pageDataModel?.errorMsg = dioErrorConversionText(dioEx);
+//
+//   } catch (e) {
+//     /// 未知异常
+//     pageViewModel.pageDataModel?.type = NotifierResultType.fail;
+//     pageViewModel.pageDataModel?.errorMsg = e.toString();
+//   }
+//
+//   return pageViewModel;
+// }
+//
+// /// 登陆
+// Future<PageViewModel> loginUser({
+//   required PageViewModel pageViewModel,
+//   Map<String, dynamic>? params,
+//   CancelToken? cancelToken,
+// }) async {
+//
+//   try {
+//     Response response = await DioClient().doPost(
+//       'user/login',
+//       params: params,
+//       cancelToken: cancelToken,
+//     );
+//
+//     if(response.statusCode == REQUEST_SUCCESS) {
+//       /// 请求成功
+//       pageViewModel.pageDataModel?.type = NotifierResultType.success;
+//
+//       /// ViewModel 和 Model 相互持有
+//       UserInfoModel model = UserInfoModel.fromJson(response.data);
+//       model.vm = pageViewModel;
+//       pageViewModel.pageDataModel?.data = model;
+//     } else {
+//
+//       /// 请求成功，但业务不通过，比如没有权限
+//       pageViewModel.pageDataModel?.type = NotifierResultType.unauthorized;
+//       pageViewModel.pageDataModel?.errorMsg = response.statusMessage;
+//     }
+//
+//   } on DioException catch (dioEx) {
+//     /// 请求异常
+//     pageViewModel.pageDataModel?.type = NotifierResultType.dioError;
+//     pageViewModel.pageDataModel?.errorMsg = dioErrorConversionText(dioEx);
+//
+//   } catch (e) {
+//     /// 未知异常
+//     pageViewModel.pageDataModel?.type = NotifierResultType.fail;
+//     pageViewModel.pageDataModel?.errorMsg = e.toString();
+//   }
+//
+//   return pageViewModel;
+// }
+}
+```
+
+
+
+### 分页数据请求
+
+```js
+class MessageRepository extends BaseRepository {
+
+  /// 分页列表
+  Future<PageViewModel> getMessageData({
+    required PageViewModel pageViewModel,
+    CancelToken? cancelToken,
+    int curPage = 0,
+  }) async => httpPagingRequest(
+      pageViewModel: pageViewModel,
+      cancelToken: cancelToken,
+      jsonCoverEntity: MessageListModel.fromJson,
+      curPage: curPage,
+      future: DioClient().doGet('article/list/$curPage/json', cancelToken: cancelToken));
+
+
+  /// 这是不使用 httpPagingRequest 的原始写法，如果业务复杂，可能还是需要在原始写法上，扩展
+  // /// 分页列表
+  // Future<PageViewModel> getMessageData({
+  //   required PageViewModel pageViewModel,
+  //   CancelToken? cancelToken,
+  //   int curPage = 0,
+  // }) async {
+  //   try {
+  //     Response response = await DioClient().doGet('article/list/$curPage/json', cancelToken: cancelToken);
+  //
+  //     if(response.statusCode == REQUEST_SUCCESS) {
+  //       /// 请求成功
+  //       pageViewModel.pageDataModel?.type = NotifierResultType.success;
+  //
+  //       /// 有分页
+  //       pageViewModel.pageDataModel?.isPaging = true;
+  //
+  //       /// 分页代码
+  //       /// ViewModel 和 Model 相互持有代码，写着 correlationPaging() 里面
+  //       pageViewModel.pageDataModel?.correlationPaging(pageViewModel, MessageListModel.fromJson(response.data));
+  //     } else {
+  //
+  //       /// 请求成功，但业务不通过，比如没有权限
+  //       pageViewModel.pageDataModel?.type = NotifierResultType.unauthorized;
+  //       pageViewModel.pageDataModel?.errorMsg = response.statusMessage;
+  //     }
+  //
+  //   } on DioException catch (dioEx) {
+  //     /// 请求异常
+  //     pageViewModel.pageDataModel?.type = NotifierResultType.dioError;
+  //     pageViewModel.pageDataModel?.errorMsg = dioErrorConversionText(dioEx);
+  //   } catch (e) {
+  //     /// 未知异常
+  //     pageViewModel.pageDataModel?.type = NotifierResultType.fail;
+  //     pageViewModel.pageDataModel?.errorMsg = e.toString();
+  //   }
+  //
+  //   return pageViewModel;
+  // }
 
 }
 ```
@@ -1462,7 +1618,7 @@ abstract class PageViewModel<T extends State> extends BaseViewModel {
 
 ```js
 /// 内部 有分页列表集合 的实体需要继承 BasePagingModel
-class BasePagingModel<VM extends PageViewModel> {
+class BasePagingModel<VM extends PageViewModel> extends BaseModel{
   int? curPage;
   List<BasePagingItem>? datas;
   int? offset;
@@ -1471,14 +1627,9 @@ class BasePagingModel<VM extends PageViewModel> {
   int? size;
   int? total;
 
-  VM? vm;
-
   BasePagingModel({this.curPage, this.datas, this.offset, this.over,
     this.pageCount, this.size, this.total});
 
-  void onDispose() {
-    vm = null;
-  }
 }
 
 /// 是分页列表 集合子项 实体需要继承 BasePagingItem
