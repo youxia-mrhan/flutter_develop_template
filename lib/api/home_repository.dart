@@ -5,7 +5,7 @@ import 'package:flutter_develop_template/common/mvvm/base_view_model.dart';
 import 'package:flutter_develop_template/common/net/dio_client.dart';
 
 import '../module/home/model/home_list_m.dart';
-import 'base_repository.dart';
+import '../common/repository/base_repository.dart';
 
 class HomeRepository extends BaseRepository {
 

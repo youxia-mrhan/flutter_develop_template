@@ -2,12 +2,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_develop_template/common/mvvm/base_page.dart';
-import 'package:flutter_develop_template/common/res/string/strings.dart';
+import '../../../../res/string/str_home.dart';
 import 'package:flutter_develop_template/common/widget/notifier_widget.dart';
 import 'package:flutter_develop_template/module/home/view_model/home_vm.dart';
 
-import '../../../common/res/style/color_styles.dart';
-import '../../../common/res/style/text_styles.dart';
+import '../../../../res/string/str_common.dart';
+import '../../../../res/style/color_styles.dart';
+import '../../../../res/style/text_styles.dart';
 import '../../../common/widget/global_notification_widget.dart';
 import '../model/home_list_m.dart';
 
@@ -82,7 +83,7 @@ class HomeViewState extends BaseStatefulPageState<HomeView, HomeViewModel> {
           valueListenable: tapNum,
           builder: (context, value, _) {
             return Text(
-              '${Strings.home}：$value',
+              '${StrHome.home}：$value',
               style: TextStyles.style_222222_20,
             );
           },
@@ -140,7 +141,7 @@ class HomeViewState extends BaseStatefulPageState<HomeView, HomeViewModel> {
                       ? Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(Strings.executeSwitchUser),
+                      Text(StrCommon.executeSwitchUser),
                       IconButton(
                           onPressed: () {
                             executeSwitchLogin = false;

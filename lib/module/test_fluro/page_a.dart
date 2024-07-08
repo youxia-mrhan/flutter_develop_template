@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_develop_template/common/mvvm/base_page.dart';
 import 'package:flutter_develop_template/common/mvvm/base_view_model.dart';
-import 'package:flutter_develop_template/common/res/string/strings.dart';
-import 'package:flutter_develop_template/common/router/navigator_util.dart';
+import '../../../../res/string/str_common.dart';
+import '../../../../router/navigator_util.dart';
 import 'package:flutter_develop_template/main/app.dart';
 
-import '../../common/router/routers.dart';
+import '../../../../router/routers.dart';
 
 class PageAView extends BaseStatefulPage {
   PageAView(
@@ -46,7 +46,7 @@ class PageAViewState extends BaseStatefulPageState<PageAView, PageAViewModel> {
   Widget appBuild(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Strings.pageA),
+        title: Text(StrCommon.pageA),
       ),
       body: SizedBox(
         width: media!.size.width,
@@ -66,19 +66,19 @@ class PageAViewState extends BaseStatefulPageState<PageAView, PageAViewModel> {
               onPressed: () {
                 NavigatorUtil.push(context, Routers.pageC, replace: true);
               },
-              child: Text(Strings.toPageCDestroyCurrent),
+              child: Text(StrCommon.toPageCDestroyCurrent),
             ),
             ElevatedButton(
               onPressed: () {
                 NavigatorUtil.push(context, Routers.pageD);
               },
-              child: Text(Strings.routeInterceptFromPageAtoPageD),
+              child: Text(StrCommon.routeInterceptFromPageAtoPageD),
             ),
             ElevatedButton(
               onPressed: () {
                 NavigatorUtil.back(context, arguments: '我是PageA页的Pop返回值');
               },
-              child: Text(Strings.backPreviousPage),
+              child: Text(StrCommon.backPreviousPage),
             ),
           ],
         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../res/style/color_styles.dart';
+import '../../res/style/color_styles.dart';
 
 /// 状态栏样式
 SystemUiOverlayStyle _systemOverlayStyleForBrightness(Brightness brightness,

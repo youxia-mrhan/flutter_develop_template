@@ -5,7 +5,7 @@ import 'package:flutter_develop_template/common/mvvm/base_model.dart';
 import 'package:flutter_develop_template/common/mvvm/base_view_model.dart';
 import 'package:flutter_develop_template/common/widget/notifier_widget.dart';
 
-import '../common/net/dio_response.dart';
+import '../net/dio_response.dart';
 
 typedef JsonCoverEntity<T extends BaseModel> = T Function(Map<String, dynamic> json);
 

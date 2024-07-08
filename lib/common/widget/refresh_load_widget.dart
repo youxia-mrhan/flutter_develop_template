@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_develop_template/common/paging/paging_data_model.dart';
-import 'package:flutter_develop_template/common/res/string/strings.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+
+import '../../res/string/str_common.dart';
 
 /// 封装 下拉刷新/上拉加载更多 组件
 class RefreshLoadWidget extends StatefulWidget {
@@ -95,19 +96,19 @@ class _RefreshLoadWidgetState extends State<RefreshLoadWidget> {
       enablePullUp: true,
       header: widget.header ??
           ClassicHeader(
-            idleText: Strings.pullDownToRefresh,
-            refreshingText: Strings.refreshing,
-            completeText: Strings.loadedSuccess,
-            releaseText: Strings.releaseToRefreshImmediately,
-            failedText: Strings.refreshFailed,
+            idleText: StrCommon.pullDownToRefresh,
+            refreshingText: StrCommon.refreshing,
+            completeText: StrCommon.loadedSuccess,
+            releaseText: StrCommon.releaseToRefreshImmediately,
+            failedText: StrCommon.refreshFailed,
           ),
       footer: widget.footer ??
           ClassicFooter(
-            idleText: Strings.pullUpLoad,
-            loadingText: Strings.loading,
-            canLoadingText: Strings.letGoLoading,
-            failedText: Strings.failedLoad,
-            noDataText: Strings.noMoreData,
+            idleText: StrCommon.pullUpLoad,
+            loadingText: StrCommon.loading,
+            canLoadingText: StrCommon.letGoLoading,
+            failedText: StrCommon.failedLoad,
+            noDataText: StrCommon.noMoreData,
             // 没有内容的文字
             noMoreIcon: Icon(Icons.data_array), // 没有内容的图标
           ),

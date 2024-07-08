@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_develop_template/common/res/string/strings.dart';
+import '../../res/string/str_common.dart';
 
-import '../common/router/routers.dart';
+import '../../router/routers.dart';
 import 'app.dart';
 
 enum ApplicationPlatform {
@@ -81,7 +81,7 @@ class Application {
       ErrorWidget.builder = (FlutterErrorDetails flutterErrorDetails) {
         return Material(
           child: Center(
-            child: Text(Strings.pleaseService),
+            child: Text(StrCommon.pleaseService),
           ),
         );
       };

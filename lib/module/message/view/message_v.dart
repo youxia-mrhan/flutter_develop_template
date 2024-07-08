@@ -2,13 +2,14 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_develop_template/common/mvvm/base_page.dart';
-import 'package:flutter_develop_template/common/res/string/strings.dart';
+import '../../../../res/string/str_common.dart';
+import '../../../../res/string/str_message.dart';
 import 'package:flutter_develop_template/common/widget/refresh_load_widget.dart';
 import 'package:flutter_develop_template/module/message/model/message_list_m.dart';
 import 'package:flutter_develop_template/module/message/view_model/message_vm.dart';
 
-import '../../../common/res/style/color_styles.dart';
-import '../../../common/res/style/text_styles.dart';
+import '../../../../res/style/color_styles.dart';
+import '../../../../res/style/text_styles.dart';
 import '../../../common/widget/global_notification_widget.dart';
 import '../../../common/widget/notifier_widget.dart';
 
@@ -77,7 +78,7 @@ class MessageViewState extends BaseStatefulPageState<MessageView, MessageViewMod
       appBar: AppBar(
           backgroundColor: AppBarTheme.of(context).backgroundColor,
           title: Text(
-            Strings.message,
+            StrMessage.message,
             style: TextStyles.style_222222_20,
           )),
       body: NotifierPageWidget<PageDataModel>(
@@ -114,7 +115,7 @@ class MessageViewState extends BaseStatefulPageState<MessageView, MessageViewMod
                 child: executeSwitchLogin ? Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(Strings.executeSwitchUser),
+                    Text(StrCommon.executeSwitchUser),
                     IconButton(onPressed: (){
                       executeSwitchLogin = false;
                       setState(() {});

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_develop_template/common/mvvm/base_page.dart';
-import 'package:flutter_develop_template/common/res/string/strings.dart';
-import 'package:flutter_develop_template/common/router/routers.dart';
-import 'package:flutter_develop_template/common/router/navigator_util.dart';
-import '../../../common/res/style/color_styles.dart';
-import '../../../common/res/style/text_styles.dart';
+import '../../../../res/string/str_order.dart';
+import '../../../../router/routers.dart';
+import '../../../../router/navigator_util.dart';
+import '../../../../res/string/str_common.dart';
+import '../../../../res/style/color_styles.dart';
+import '../../../../res/style/text_styles.dart';
 import '../../../common/widget/global_notification_widget.dart';
 import '../view_model/order_vm.dart';
 
@@ -64,7 +65,7 @@ class OrderViewState extends BaseStatefulPageState<OrderView, OrderViewModel> {
       appBar: AppBar(
         backgroundColor: AppBarTheme.of(context).backgroundColor,
         title: Text(
-          Strings.order,
+          StrOrder.order,
           style: TextStyles.style_222222_20,
         ),
       ),
@@ -104,7 +105,7 @@ class OrderViewState extends BaseStatefulPageState<OrderView, OrderViewModel> {
                           }());
                     });
                   },
-                  child: Text(Strings.noObjectToPageA),
+                  child: Text(StrOrder.noObjectToPageA),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -126,7 +127,7 @@ class OrderViewState extends BaseStatefulPageState<OrderView, OrderViewModel> {
                       }());
                     });
                   },
-                  child: Text(Strings.objectToPageB),
+                  child: Text(StrOrder.objectToPageB),
                 ),
               ],
             ),
@@ -137,7 +138,7 @@ class OrderViewState extends BaseStatefulPageState<OrderView, OrderViewModel> {
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(Strings.executeSwitchUser),
+                      Text(StrCommon.executeSwitchUser),
                       IconButton(
                           onPressed: () {
                             executeSwitchLogin = false;

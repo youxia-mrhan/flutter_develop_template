@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_develop_template/api/base_repository.dart';
+import 'package:flutter_develop_template/common/repository/base_repository.dart';
 import 'package:flutter_develop_template/common/net/dio_client.dart';
 
 import '../common/mvvm/base_view_model.dart';

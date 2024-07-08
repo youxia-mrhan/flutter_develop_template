@@ -7,9 +7,9 @@ import 'package:flutter_develop_template/common/mvvm/base_model.dart';
 import 'package:flutter_develop_template/common/mvvm/base_view_model.dart';
 import 'package:flutter_develop_template/common/mvvm/base_view_model_widget.dart';
 import 'package:flutter_develop_template/common/paging/base_paging_model.dart';
-import 'package:flutter_develop_template/common/res/string/strings.dart';
 import 'package:flutter_develop_template/main/application.dart';
 
+import '../../res/string/str_common.dart';
 import '../widget/global_notification_widget.dart';
 
 abstract class BaseStatefulPage<VM extends PageViewModel> extends BaseViewModelStatefulWidget<VM> {
@@ -237,7 +237,7 @@ abstract class BaseStatefulPageState<T extends BaseStatefulPage, VM extends Page
       }
     }
     return Center(
-      child: Text(Strings.platformNotAdapted),
+      child: Text(StrCommon.platformNotAdapted),
     );
   }
 

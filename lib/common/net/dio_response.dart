@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_develop_template/common/res/string/strings.dart';
+
+import '../../res/string/str_common.dart';
 
 /// 响应的数据模型，根据你当前后台返回的数据来自定义，我这里只是做个例子
 abstract class BaseResponseData {
@@ -43,26 +44,26 @@ String? dioErrorConversionText(DioException e) {
   String str;
   switch (e.type) {
     case DioExceptionType.connectionTimeout:
-      str = '[DioExceptionType.connectionTimeout] ${Strings.connectionTimeout}';
+      str = '[DioExceptionType.connectionTimeout] ${StrCommon.connectionTimeout}';
       break;
     case DioExceptionType.sendTimeout:
-      str = '[DioExceptionType.sendTimeout] ${Strings.sendTimeout}';
+      str = '[DioExceptionType.sendTimeout] ${StrCommon.sendTimeout}';
       break;
     case DioExceptionType.receiveTimeout:
-      str = '[DioExceptionType.receiveTimeout] ${Strings.receiveTimeout}';
+      str = '[DioExceptionType.receiveTimeout] ${StrCommon.receiveTimeout}';
       break;
     case DioExceptionType.badCertificate:
-      str = '[DioExceptionType.badCertificate] ${Strings.accessCertificateError}';
+      str = '[DioExceptionType.badCertificate] ${StrCommon.accessCertificateError}';
       break;
     case DioExceptionType.badResponse:
-      str = '[DioExceptionType.badResponse] ${Strings.validationFailed}';
+      str = '[DioExceptionType.badResponse] ${StrCommon.validationFailed}';
       break;
     case DioExceptionType.connectionError:
-      str = '[DioExceptionType.connectionError] ${Strings.connectionIsAbnormal}';
+      str = '[DioExceptionType.connectionError] ${StrCommon.connectionIsAbnormal}';
       break;
     case DioExceptionType.unknown:
     default:
-      str = '[DioExceptionType.unknown] ${Strings.unknownError}';
+      str = '[DioExceptionType.unknown] ${StrCommon.unknownError}';
       break;
   }
   return str;
@@ -75,38 +76,38 @@ String? codeConversionText(int? statusCode) {
   if (statusCode != null) {
     switch (statusCode) {
       case 400:
-        str = '[$statusCode] ${Strings.parameterIsIncorrect}';
+        str = '[$statusCode] ${StrCommon.parameterIsIncorrect}';
         break;
       case 402:
-        str = '[$statusCode] ${Strings.illegalRequests}';
+        str = '[$statusCode] ${StrCommon.illegalRequests}';
         break;
       case 403:
-        str = '[$statusCode] ${Strings.serverRejectsRequest}';
+        str = '[$statusCode] ${StrCommon.serverRejectsRequest}';
         break;
       case 404:
-        str = '[$statusCode] ${Strings.accessAddressDoesNotExist}';
+        str = '[$statusCode] ${StrCommon.accessAddressDoesNotExist}';
         break;
       case 405:
-        str = '[$statusCode] ${Strings.requestIsMadeWrongWay}';
+        str = '[$statusCode] ${StrCommon.requestIsMadeWrongWay}';
         break;
       case 500:
-        str = '[$statusCode] ${Strings.wasAnErrorInsideServer}';
+        str = '[$statusCode] ${StrCommon.wasAnErrorInsideServer}';
         break;
       case 502:
-        str = '[$statusCode] ${Strings.invalidRequest}';
+        str = '[$statusCode] ${StrCommon.invalidRequest}';
         break;
       case 503:
-        str = '[$statusCode] ${Strings.serverIsBusy}';
+        str = '[$statusCode] ${StrCommon.serverIsBusy}';
         break;
       case 505:
-        str = '[$statusCode] ${Strings.unsupportedHttpProtocol}';
+        str = '[$statusCode] ${StrCommon.unsupportedHttpProtocol}';
         break;
       default:
-        str = '[$statusCode] ${Strings.unknownError}';
+        str = '[$statusCode] ${StrCommon.unknownError}';
         break;
     }
   } else {
-    str = '[$statusCode] ${Strings.unknownError}';
+    str = '[$statusCode] ${StrCommon.unknownError}';
   }
   return str;
 }

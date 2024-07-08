@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_develop_template/common/mvvm/base_page.dart';
 import 'package:flutter_develop_template/common/mvvm/base_view_model.dart';
-import 'package:flutter_develop_template/common/res/string/strings.dart';
 import 'package:flutter_develop_template/main/app.dart';
-import '../../common/router/navigator_util.dart';
-import '../../common/router/routers.dart';
+import '../../../../res/string/str_common.dart';
+import '../../../../router/navigator_util.dart';
+import '../../../../router/routers.dart';
 import '../order/view/order_v.dart';
 
 class PageBView extends BaseStatefulPage {
@@ -39,7 +39,7 @@ class PageBViewState extends BaseStatefulPageState<PageBView,PageBViewModel> {
   Widget appBuild(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Strings.pageB),
+        title: Text(StrCommon.pageB),
       ),
       body: SizedBox(
         width: media!.size.width,
@@ -59,13 +59,13 @@ class PageBViewState extends BaseStatefulPageState<PageBView,PageBViewModel> {
               onPressed: () {
                 NavigatorUtil.push(context,Routers.pageD);
               },
-              child: Text(Strings.toPageD),
+              child: Text(StrCommon.toPageD),
             ),
             ElevatedButton(
               onPressed: () {
                 NavigatorUtil.back(context,arguments: widget.paramsModel);
               },
-              child: Text(Strings.backPreviousPage),
+              child: Text(StrCommon.backPreviousPage),
             ),
           ],
         ),

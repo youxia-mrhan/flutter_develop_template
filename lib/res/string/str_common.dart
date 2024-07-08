@@ -1,9 +1,10 @@
 /// 这里统一写全局，非动态、固定的 字符串文本
 /// 如果哪一天 项目突然要求 使用 国际化
 /// 直接将这里的内容，拷贝到 国际化插件生成的 映射文件中，再 对照中文 翻译成 指定语言
-class Strings {
+///
+/// 通用
+class StrCommon {
 
-  ///--------------------------- 通用 -------------------------------
   static const String pleaseService = '请联系客服';
   static const String platformNotAdapted = '当前平台未适配';
   static const String executeSwitchUser = '执行了切换用户操作';
@@ -43,29 +44,6 @@ class Strings {
   static const String serverIsBusy = '服务器繁忙';
   static const String unsupportedHttpProtocol = '不支持的HTTP协议';
 
-  ///--------------------------- 首页 -------------------------------
-  static const String home = 'Home';
-
-
-  ///--------------------------- 消息 -------------------------------
-  static const String message = 'Message';
-
-
-  ///--------------------------- 订单 -------------------------------
-  static const String order = 'Order';
-  static const String noObjectToPageA = '携带 非对象类型 前往PageA';
-  static const String objectToPageB = '携带 对象类型 前往PageB';
-
-
-  ///--------------------------- 个人 -------------------------------
-  static const String personal = 'Personal';
-  static const String register = '注册';
-  static const String switchUser = '切换用户';
-  static const String loginSuccess = '登陆成功';
-  static const String registerSuccess = '注册成功';
-  static const String welcome = '欢迎您';
-  static const String login = '登陆';
-
 
   ///--------------------------- 测试路由 -------------------------------
   static const String pageA = 'PageA';
@@ -78,6 +56,5 @@ class Strings {
   static const String backPreviousPage = '返回上一页';
   static const String toPageD = '前往PageD';
   static const String toHomeDestroyAll = '前往首页，并销毁所有页面';
-
 
 }

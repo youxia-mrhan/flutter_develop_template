@@ -3,13 +3,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_develop_template/common/mvvm/base_page.dart';
 import 'package:flutter_develop_template/common/mvvm/base_view_model.dart';
-import 'package:flutter_develop_template/common/router/page_route_observer.dart';
-import 'package:flutter_develop_template/common/router/routers.dart';
+import '../../router/page_route_observer.dart';
+import '../../router/routers.dart';
 import 'package:flutter_develop_template/common/widget/global_notification_widget.dart';
 import 'package:flutter_develop_template/module/message/view/message_v.dart';
 
-import '../common/res/style/color_styles.dart';
-import '../common/res/style/theme_styles.dart';
+import '../../res/style/color_styles.dart';
+import '../../res/style/theme_styles.dart';
 import '../module/home/view/home_v.dart';
 import '../module/order/view/order_v.dart';
 import '../module/personal/view/personal_v.dart';
