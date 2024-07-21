@@ -170,8 +170,6 @@ class HomeViewState extends BaseStatefulPageState<HomeView, HomeViewModel> {
 ```js
 class HomeViewModel extends PageViewModel<HomeViewState> {
 
-  HomeViewState? state;
-
   @override
   onCreate() {
   

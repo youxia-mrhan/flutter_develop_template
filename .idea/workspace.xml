@@ -10,33 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35f4bf16-554e-49c0-a4d5-701389847ae3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/res/string/str_home.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/res/string/str_message.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/res/string/str_order.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/res/string/str_personal.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/mvvm/base_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/mvvm/base_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/net/dio_response.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/net/dio_response.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/res/string/strings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/res/string/str_common.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/res/style/color_styles.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/res/style/color_styles.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/res/style/text_styles.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/res/style/text_styles.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/res/style/theme_styles.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/res/style/theme_styles.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/router/navigator_util.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router/navigator_util.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/router/page_route_observer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router/page_route_observer.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/router/routers.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router/routers.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/util/global.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/util/global.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/widget/notifier_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/notifier_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/widget/refresh_load_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/refresh_load_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main/app.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main/application.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main/application.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/home/view/home_v.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/home/view/home_v.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/message/view/message_v.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/message/view/message_v.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/order/view/order_v.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/order/view/order_v.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/personal/view/personal_v.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/personal/view/personal_v.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/test_fluro/page_a.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/test_fluro/page_a.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/test_fluro/page_b.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/test_fluro/page_b.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/test_fluro/page_c.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/test_fluro/page_c.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/test_fluro/page_d.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/test_fluro/page_d.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,18 +49,18 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cidr.known.project.marker": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "/Users/hanxuguang/Documents/develop/flutter/flutter_object/flutter_develop_template/lib/common/res/string",
-    "settings.editor.selected.configurable": "flutter.settings",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hanxuguang/Documents/develop/flutter/flutter_object/flutter_develop_template/lib/common/res/string&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib/common/res/string" />
@@ -96,11 +70,11 @@
       <recent name="$PROJECT_DIR$/lib/module/home" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/common/repository" />
       <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/lib/common/res" />
       <recent name="$PROJECT_DIR$/lib/common/router" />
       <recent name="$PROJECT_DIR$/lib/common/paging" />
-      <recent name="$PROJECT_DIR$/lib/module/order/view" />
     </key>
   </component>
   <component name="RunManager" selected="Flutter.main_develop.dart">
