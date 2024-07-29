@@ -1,20 +1,10 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
-import 'package:flutter/foundation.dart';
 
 import '../../main/application.dart';
 import 'dio_interceptor.dart';
-
-_parseAndDecode(String response) {
-  return jsonDecode(response);
-}
-
-parseJson(String text) {
-  return compute(_parseAndDecode, text);
-}
 
 /// 默认超时时间
 const defaultTimeout = 60 * 1000;
@@ -27,7 +17,6 @@ class DioClient extends DioForNative {
 
   /// 初始化方法
   DioClient._init() {
-    (transformer as BackgroundTransformer).jsonDecodeCallback = parseJson;
     options = BaseOptions(
         // 设置基础配置
         connectTimeout: Duration(milliseconds: defaultTimeout), // 连接超时时间

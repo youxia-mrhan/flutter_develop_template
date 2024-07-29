@@ -38,6 +38,7 @@ dependencies:
   dio: ^5.4.3+1
   fluro: ^2.0.5
   pull_to_refresh: ^2.0.0
+  sentry_flutter: ^7.8.0
 
 dev_dependencies:
   flutter_test:

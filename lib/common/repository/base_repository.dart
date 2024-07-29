@@ -16,13 +16,13 @@ class BaseRepository {
   /// 普通页面（非分页）数据请求 统一处理
   Future<PageViewModel> httpPageRequest({
     required PageViewModel pageViewModel,
-    required Future<Response> future,
+    required Future<Response> Function() future,
     required JsonCoverEntity jsonCoverEntity,
     CancelToken? cancelToken,
     int curPage = 0,
   }) async {
     try {
-      Response response = await future;
+      Response response = await future();
 
       if (response.statusCode == REQUEST_SUCCESS) {
         /// 请求成功
@@ -53,13 +53,13 @@ class BaseRepository {
   /// 分页数据请求 统一处理
   Future<PageViewModel> httpPagingRequest({
     required PageViewModel pageViewModel,
-    required Future<Response> future,
+    required Future<Response> Function() future,
     required JsonCoverEntity jsonCoverEntity,
     CancelToken? cancelToken,
     int curPage = 0,
   }) async {
     try {
-      Response response = await future;
+      Response response = await future();
 
       if (response.statusCode == REQUEST_SUCCESS) {
         /// 请求成功

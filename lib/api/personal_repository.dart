@@ -16,7 +16,7 @@ class PersonalRepository extends BaseRepository {
           pageViewModel: pageViewModel,
           cancelToken: cancelToken,
           jsonCoverEntity: UserInfoModel.fromJson,
-          future: DioClient().doPost(
+          future: () => DioClient().doPost(
             'user/register',
             params: params,
             cancelToken: cancelToken,
@@ -32,7 +32,7 @@ class PersonalRepository extends BaseRepository {
           pageViewModel: pageViewModel,
           cancelToken: cancelToken,
           jsonCoverEntity: UserInfoModel.fromJson,
-          future: DioClient().doPost(
+          future: () => DioClient().doPost(
             'user/login',
             params: params,
             cancelToken: cancelToken,

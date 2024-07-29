@@ -17,7 +17,7 @@ class MessageRepository extends BaseRepository {
       cancelToken: cancelToken,
       jsonCoverEntity: MessageListModel.fromJson,
       curPage: curPage,
-      future: DioClient().doGet('article/list/$curPage/json', cancelToken: cancelToken));
+      future: () => DioClient().doGet('article/list/$curPage/json', cancelToken: cancelToken));
 
 
   /// 这是不使用 httpPagingRequest 的原始写法，如果业务复杂，可能还是需要在原始写法上，扩展

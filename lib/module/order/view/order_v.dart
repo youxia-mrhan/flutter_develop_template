@@ -17,7 +17,6 @@ class OrderView extends BaseStatefulPage {
 }
 
 class OrderViewState extends BaseStatefulPageState<OrderView, OrderViewModel> {
-
   late TestParamsModel paramsModel;
 
   @override
@@ -47,7 +46,7 @@ class OrderViewState extends BaseStatefulPageState<OrderView, OrderViewModel> {
   void didChangeDependencies() {
     var operate = GlobalOperateProvider.getGlobalOperate(context: context);
 
-    assert((){
+    assert(() {
       debugPrint('PersonalView.didChangeDependencies --- $operate');
       return true;
     }());
@@ -97,12 +96,13 @@ class OrderViewState extends BaseStatefulPageState<OrderView, OrderViewModel> {
                     /// 注意：使用 path拼接方式 传递 参数，会改变原来的 路由页面 Path
                     /// path会变成：/pageA?name=jk&title=%E5%BC%A0%E4%B8%89&url=https%3A%2F%2Fwww.baidu.com&age=99&price=9.9&flag=true
                     /// 所以再次匹配pageA，找不到，需要还原一下，getOriginalPath(path)
-                    NavigatorUtil.push(context,'${Routers.pageA}?name=$name&title=$title&url=$url&age=$age&price=$price&flag=$flag')
+                    NavigatorUtil.push(context,
+                            '${Routers.pageA}?name=$name&title=$title&url=$url&age=$age&price=$price&flag=$flag')
                         .then((result) {
-                          assert((){
-                            debugPrint('PageA Pop的返回值：$result');
-                            return true;
-                          }());
+                      assert(() {
+                        debugPrint('PageA Pop的返回值：$result');
+                        return true;
+                      }());
                     });
                   },
                   child: Text(StrOrder.noObjectToPageA),
@@ -121,7 +121,7 @@ class OrderViewState extends BaseStatefulPageState<OrderView, OrderViewModel> {
                         flag: true,
                       ),
                     ).then((result) {
-                      assert((){
+                      assert(() {
                         debugPrint('PageB Pop的返回值：$result');
                         return true;
                       }());
@@ -129,6 +129,14 @@ class OrderViewState extends BaseStatefulPageState<OrderView, OrderViewModel> {
                   },
                   child: Text(StrOrder.objectToPageB),
                 ),
+                ElevatedButton(
+                  child: Text("上报 同步异常"),
+                  onPressed: pushSyncError,
+                ),
+                ElevatedButton(
+                  child: Text("上报 异步异常"),
+                  onPressed: pushAsyncError,
+                )
               ],
             ),
           ),
@@ -152,6 +160,21 @@ class OrderViewState extends BaseStatefulPageState<OrderView, OrderViewModel> {
         ],
       ),
     );
+  }
+
+  /// 上报 同步异常
+  pushSyncError() {
+    DateTime today = new DateTime.now();
+    String dateSlug = "${today.year.toString()}-${today.month.toString().padLeft(2, '0')}-${today.day.toString().padLeft(2, '0')} ${today.hour.toString().padLeft(2, '0')}:${today.minute.toString().padLeft(2, '0')}:${today.second.toString().padLeft(2, '0')}";
+    throw Exception("$dateSlug:发生 同步异常");
+  }
+
+  /// 上报 异步异常
+  pushAsyncError() async {
+    DateTime today = new DateTime.now();
+    String dateSlug = "${today.year.toString()}-${today.month.toString().padLeft(2, '0')}-${today.day.toString().padLeft(2, '0')} ${today.hour.toString().padLeft(2, '0')}:${today.minute.toString().padLeft(2, '0')}:${today.second.toString().padLeft(2, '0')}";
+    await Future.delayed(Duration(seconds: 1));
+    throw Exception("$dateSlug:发生 异步异常");
   }
 
   @override
