@@ -11,8 +11,8 @@ void main() => Application.runApplication(
     /// 异常抛出，会在终端会显示，可帮助开发阶段，快速定位异常所在，
     /// 但会阻断，后续代码执行，建议 非开发阶段 关闭
     throwError: true,
-    pushErrToSentry: false,
-    sentryDNS: 'https://123456789191111@xxx.com/2'
+    pushErrToSentry: false, // 是否开启 异常上报到 Sentry
+    sentryDNS: 'https://123456789191111@xxx.com/2' // Sentry DNS 标识
 
     /// AndroidManifest.xml 中
     ///  开启网络权限
