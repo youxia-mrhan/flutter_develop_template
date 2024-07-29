@@ -1806,6 +1806,7 @@ void main() => Application.runApplication(
 
 ## 演示效果
 
+<img src="08.gif" alt="08">
 
 # 参考文档
 
