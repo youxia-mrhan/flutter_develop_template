@@ -1786,7 +1786,7 @@ DNS字符串，传入即可。
 /// 入口函数
 void main() => Application.runApplication(
     ... ... 
-    pushErrToSentry: false, // 是否开启 异常上报到 Sentry
+    pushErrToSentry: true, // 是否开启 异常上报到 Sentry
     sentryDNS: 'https://123456789191111@xxx.com/2' // Sentry DNS 标识
 
     /// AndroidManifest.xml 中
