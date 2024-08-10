@@ -67,7 +67,7 @@ class PersonalViewState extends BaseStatefulPageState<PersonalView, PersonalView
                 child: ElevatedButton(
                   child: Text(StrPersonal.register),
                   onPressed: () {
-                    // 如果你想刷新的时候，显示loading，加上这个两行
+                    // 如果你想刷新的时候，显示loading，加上这两行
                     viewModel?.pageDataModel?.type = NotifierResultType.loading;
                     viewModel?.pageDataModel?.refreshState();
 
@@ -93,7 +93,7 @@ class PersonalViewState extends BaseStatefulPageState<PersonalView, PersonalView
                 child: ElevatedButton(
                   child: Text(StrPersonal.login),
                   onPressed: () {
-                    // 如果你想刷新的时候，显示loading，加上这个两行
+                    // 如果你想刷新的时候，显示loading，加上这两行
                     viewModel?.pageDataModel?.type = NotifierResultType.loading;
                     viewModel?.pageDataModel?.refreshState();
 

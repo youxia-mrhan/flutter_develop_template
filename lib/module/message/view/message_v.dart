@@ -63,7 +63,7 @@ class MessageViewState extends BaseStatefulPageState<MessageView, MessageViewMod
       executeSwitchLogin = true;
 
       // 重新请求数据
-      // 如果你想刷新的时候，显示loading，加上这个两行
+      // 如果你想刷新的时候，显示loading，加上这两行
       viewModel?.pageDataModel?.type = NotifierResultType.loading;
       viewModel?.pageDataModel?.refreshState();
 
