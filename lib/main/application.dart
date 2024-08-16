@@ -61,18 +61,17 @@ class EnvConfig {
 }
 
 class Application {
-
-  Application.runApplication({
-    required EnvTag envTag, // 开发环境
-    required String baseUrl, // 域名
-    required ApplicationPlatform platform, // 平台
-    bool proxyEnable = false, // 是否开启抓包
-    String? caughtAddress, // 抓包工具的代理地址 + 端口
-    bool isGlobalNotification = false, // 是否有全局通知操作，比如切换用户
-    bool throwError = false, // 异常抛出，会在终端会显示，可帮助开发阶段，快速定位异常所在，但会阻断，后续代码执行
-    bool pushErrToSentry = false, // 是否开启 异常上报到 Sentry
-    String? sentryDNS // Sentry DNS 标识
-  }) {
+  Application.runApplication(
+      {required EnvTag envTag, // 开发环境
+      required String baseUrl, // 域名
+      required ApplicationPlatform platform, // 平台
+      bool proxyEnable = false, // 是否开启抓包
+      String? caughtAddress, // 抓包工具的代理地址 + 端口
+      bool isGlobalNotification = false, // 是否有全局通知操作，比如切换用户
+      bool throwError = false, // 异常抛出，会在终端会显示，可帮助开发阶段，快速定位异常所在，但会阻断，后续代码执行
+      bool pushErrToSentry = false, // 是否开启 异常上报到 Sentry
+      String? sentryDNS // Sentry DNS 标识
+      }) {
     EnvConfig.envTag = envTag;
     EnvConfig.baseUrl = baseUrl;
     EnvConfig.platform = platform;
@@ -93,7 +92,9 @@ class Application {
     ErrorWidget.builder = (FlutterErrorDetails flutterErrorDetails) {
       return Material(
         child: Center(
-          child: Text(StrCommon.pleaseService),
+          child: EnvConfig.envTag == EnvTag.develop
+              ? Text(flutterErrorDetails.exceptionAsString())
+              : Text(StrCommon.pleaseService),
         ),
       );
     };
@@ -102,8 +103,9 @@ class Application {
     /// 用于捕获框架内发生的未处理异常。无论是同步还是异步异常，
     /// 只要它们发生在 Flutter 框架的上下文中，都会触发这个回调。
     FlutterError.onError = (FlutterErrorDetails flutterErrorDetails) async {
-      if(EnvConfig.pushErrToSentry) {
+      if (EnvConfig.pushErrToSentry) {
         debugPrint('执行了异常 上报：${flutterErrorDetails.exception}');
+
         /// 使用第三方服务（例如Sentry）上报错误
         /// Sentry.captureException(error, stackTrace: stackTrace);
         await Sentry.captureException(
@@ -116,14 +118,14 @@ class Application {
     /// runZonedGuarded 捕获 Flutter 框架中的 异步异常
     /// 注意：它不是全局的，只能捕获指定范围
     runZonedGuarded(() async {
-      if(EnvConfig.pushErrToSentry) {
+      if (EnvConfig.pushErrToSentry) {
         /// 初始化 Sentry
         await SentryFlutter.init(
-              (options) {
+          (options) {
             options.dsn = EnvConfig.sentryDNS;
             options.tracesSampleRate = 1.0;
 
-            if(EnvConfig.envTag == EnvTag.develop) {
+            if (EnvConfig.envTag == EnvTag.develop) {
               /// 是否打印输出 Sentry 日志
               options.debug = true;
             }
@@ -134,8 +136,9 @@ class Application {
         runApp(App());
       }
     }, (Object error, StackTrace stack) async {
-      if(EnvConfig.pushErrToSentry) {
+      if (EnvConfig.pushErrToSentry) {
         debugPrint('执行了异常 上报：$error');
+
         /// 使用第三方服务（例如Sentry）上报错误
         /// Sentry.captureException(error, stackTrace: stackTrace);
         await Sentry.captureException(
@@ -144,7 +147,5 @@ class Application {
         );
       }
     });
-
   }
-
 }

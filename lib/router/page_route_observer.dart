@@ -25,19 +25,19 @@ class PageRouteObserver extends NavigatorObserver {
       if(newRoutePath == Routers.pageD) {
         assert((){
           debugPrint('准备从 PageA页面 进入 pageD页面，进行登陆信息验证');
-
-          // if(验证不通过) {
-            /// 注意：要延迟一帧
-            WidgetsBinding.instance.addPostFrameCallback((_){
-              // 我这里是pop，视觉上达到无法进入新页面的效果，
-              // 正常业务是跳转到 登陆页面
-              NavigatorUtil.back(navigatorKey.currentContext!);
-            });
-          // }
-
           return true;
         }());
+
+        // if(验证不通过) {
+        /// 注意：要延迟一帧
+        WidgetsBinding.instance.addPostFrameCallback((_){
+          // 我这里是pop，视觉上达到无法进入新页面的效果，
+          // 正常业务是跳转到 登陆页面
+          NavigatorUtil.back(navigatorKey.currentContext!);
+        });
+        // }
       }
+
     }
 
     routeStack.add(route);
