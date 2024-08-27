@@ -1866,3 +1866,6 @@ MVVM：https://juejin.cn/post/7166503123983269901
 玩Android平台的开放 API；
 
 https://www.wanandroid.com/blog/show/2
+
+# 持续更新
+这篇文章会 **持续更新**，后面会加入更多的，通用功能。
