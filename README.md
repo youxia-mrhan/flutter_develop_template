@@ -1306,7 +1306,12 @@ class Application {
     /// 只要它们发生在 Flutter 框架的上下文中，都会触发这个回调。
     FlutterError.onError = (FlutterErrorDetails flutterErrorDetails) async {
       if(EnvConfig.pushErrToSentry) {
-        debugPrint('执行了异常 上报：${flutterErrorDetails.exception}');
+
+        assert((){
+          debugPrint('执行了异常 上报：${flutterErrorDetails.exception}');
+          return true;
+        }());        
+        
         /// 使用第三方服务（例如Sentry）上报错误
         /// Sentry.captureException(error, stackTrace: stackTrace);
         await Sentry.captureException(
@@ -1338,7 +1343,12 @@ class Application {
       }
     }, (Object error, StackTrace stack) async {
       if(EnvConfig.pushErrToSentry) {
-        debugPrint('执行了异常 上报：$error');
+      
+        assert((){
+          debugPrint('执行了异常 上报：$error');
+          return true;
+        }());
+
         /// 使用第三方服务（例如Sentry）上报错误
         /// Sentry.captureException(error, stackTrace: stackTrace);
         await Sentry.captureException(
