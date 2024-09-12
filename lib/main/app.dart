@@ -17,10 +17,10 @@ import '../module/personal/view/personal_v.dart';
 /// App初始化的第一个页面可能是 其他页面，比如 广告、引导页、登陆页面
 enum AppInitState {
   /// 是App主体页面
-  isAppMainHome,
+  isAppMainPage,
 
   /// 不是主体页面
-  noAppMainHome
+  noAppMainPage
 }
 
 /// 全局key
@@ -77,7 +77,7 @@ class App extends StatelessWidget {
               exit(0); // 退出应用
             },
             child: AppTransfer(
-              initState: AppInitState.isAppMainHome,
+              initState: AppInitState.isAppMainPage,
             )),
       ),
     );
@@ -94,7 +94,7 @@ class AppTransfer extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget child; // MaterialApp
     switch (initState) {
-      case AppInitState.isAppMainHome:
+      case AppInitState.isAppMainPage:
         {
           // 先判断是否登陆
           // ... ...
