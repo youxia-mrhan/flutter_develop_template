@@ -186,6 +186,7 @@ class AppMainPageState extends BaseStatefulPageState<AppMainPage,AppMainPageView
     return Scaffold(
       body: buildPageView(),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: ColorStyles.color_FFFFFF,
         type: BottomNavigationBarType.fixed, // 自适应宽度，但同时会失去，图标/文字 缩放效果
         currentIndex: bottomSelectedIndex,
         onTap: bottomTap,
