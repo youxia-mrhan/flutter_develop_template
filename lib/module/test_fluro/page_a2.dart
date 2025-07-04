@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_develop_template/common/mvvm/base_page.dart';
 import 'package:flutter_develop_template/common/mvvm/base_view_model.dart';
-import 'package:flutter_develop_template/main/app.dart';
 
 import '../../../../res/string/str_common.dart';
 import '../../../../router/navigator_util.dart';
@@ -43,13 +42,14 @@ class PageA2ViewState extends BaseStatefulPageState<PageA2View, PageA2ViewModel>
 
   @override
   Widget appBuild(BuildContext context) {
+    final media = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(StrCommon.pageA2),
       ),
       body: SizedBox(
-        width: media!.size.width,
-        height: media!.size.height,
+        width: media.size.width,
+        height: media.size.height,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,

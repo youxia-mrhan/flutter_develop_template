@@ -10,12 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35f4bf16-554e-49c0-a4d5-701389847ae3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main/main_pre.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main/main_pre.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main/app.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/module/personal/view/personal_v.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/personal/view/personal_v.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/module/test_fluro/page_a.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/test_fluro/page_a.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/module/test_fluro/page_a2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/test_fluro/page_a2.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/module/test_fluro/page_b.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/test_fluro/page_b.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/module/test_fluro/page_c.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/test_fluro/page_c.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/module/test_fluro/page_d.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/test_fluro/page_d.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

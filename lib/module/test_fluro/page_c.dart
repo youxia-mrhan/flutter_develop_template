@@ -5,7 +5,6 @@ import 'package:flutter_develop_template/common/mvvm/base_view_model.dart';
 import '../../../../res/string/str_common.dart';
 import '../../../../router/navigator_util.dart';
 import '../../../../router/routers.dart';
-import '../../main/app.dart';
 
 class PageCView extends BaseStatefulPage {
   PageCView({super.key});
@@ -34,13 +33,14 @@ class PageCViewState extends BaseStatefulPageState<PageCView,PageCViewModel> {
 
   @override
   Widget appBuild(BuildContext context) {
+    final media = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(StrCommon.pageC),
       ),
       body: SizedBox(
-        width: media!.size.width,
-        height: media!.size.height,
+        width: media.size.width,
+        height: media.size.height,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,

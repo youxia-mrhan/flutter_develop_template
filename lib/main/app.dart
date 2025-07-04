@@ -27,9 +27,6 @@ enum AppInitState {
 /// 获取全局context方式：navigatorKey.currentContext
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-/// 这个对象 可以获取当前设配信息
-MediaQueryData? media;
-
 /// 监听全局路由，比如获取 当前路由栈里 页面总数
 PageRouteObserver? pageRouteObserver;
 
@@ -39,8 +36,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    /// 初始化 MediaQuery、PageRouteObserver
-    media ??= MediaQuery.of(context);
+    /// 初始化 PageRouteObserver
     pageRouteObserver ??= PageRouteObserver();
 
     return GlobalOperateProvider(
